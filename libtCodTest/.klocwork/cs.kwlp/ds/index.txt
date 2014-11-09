@@ -1,0 +1,10 @@
+c:\Temp\libtcod\libtcod-1.5.1\include\console.hpp;;1;0;0
+C:\Temp\libtcod\libtCodTest\libtCodTest\stdafx.cpp;;2;0;0
+C:\Temp\libtcod\libtcod-1.5.1\samples\samples_cpp.cpp;;3;0;0
+C:\Temp\libtcod\libtCodTest\libtCodTest\actor.h;;4;0;0
+C:\Temp\libtcod\libtCodTest\libtCodTest\actor.cpp;;5;0;0
+C:\Temp\libtcod\libtCodTest\libtCodTest\map.h;;6;0;0
+C:\Temp\libtcod\libtCodTest\libtCodTest\map.cpp;;7;0;0
+C:\Temp\libtcod\libtCodTest\libtCodTest\engine.h;;8;0;0
+C:\Temp\libtcod\libtCodTest\libtCodTest\engine.cpp;;9;0;0
+C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\crt\src\dbgdel.cpp;;10;0;0
