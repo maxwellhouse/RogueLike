@@ -7,6 +7,7 @@ class tEngine
 {
 public :
     tEngine();
+	tEngine(int screenWidth, int screenHeight);
     ~tEngine();
     void update();
     void render();
@@ -17,6 +18,9 @@ public:
     tActor * m_pPlayer;
     tMap * m_pMap;
     int m_FovRadius;
+	int m_ScreenWidth;
+	int m_ScreenHeight;
+	TCOD_key_t m_LastKey;
 
 public:
 enum eGameStatus {

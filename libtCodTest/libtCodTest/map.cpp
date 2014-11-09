@@ -1,7 +1,4 @@
-#include "libtcod.hpp"
-#include "map.h"
-#include "engine.h"
-#include "actor.h"
+#include "main.h"
 
 static const int ROOM_MAX_SIZE = 12;
 static const int ROOM_MIN_SIZE = 6;
@@ -182,11 +179,19 @@ void tMap::addMonster(int x, int y)
     if ( rng->getInt(0,100) < 80 ) 
     {
         // create an orc
-        engine.m_Actors.push(new tActor(x, y, 'o', "orc", TCODColor::desaturatedGreen));
+		tActor* pOrc = new tActor(x, y, 'o', "orc", TCODColor::desaturatedGreen);
+		pOrc->m_pDestructible = new tMonsterDestructible(10, 0, "dead orc");
+		pOrc->m_pAttacker = new tAttacker(3);
+		pOrc->m_pAI = new tMonsterAi();
+        engine.m_Actors.push(pOrc);
     } 
     else 
     {
         // create a troll
-        engine.m_Actors.push(new tActor(x, y, 'T', "troll", TCODColor::darkerGreen));               
+		tActor* pTroll = new tActor(x, y, 'T', "troll", TCODColor::darkerGreen);
+		pTroll->m_pDestructible = new tMonsterDestructible(16, 1, "dead troll");
+		pTroll->m_pAttacker = new tAttacker(4);
+		pTroll->m_pAI = new tMonsterAi();
+		engine.m_Actors.push(pTroll);
     }
 }

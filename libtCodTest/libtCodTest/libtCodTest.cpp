@@ -2,12 +2,9 @@
 //
 
 #include "stdafx.h"
-#include "libtcod.hpp"
-#include "actor.h"
-#include "map.h"
-#include "engine.h"
+#include "main.h"
 
-tEngine engine;
+tEngine engine(80,50);
 
 int _tmain(int argc, _TCHAR* argv[])
 {

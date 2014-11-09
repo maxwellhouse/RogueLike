@@ -17,9 +17,9 @@ tActor::tActor(int x, int y, int ch, const char *name, const TCODColor &col) :
 
 void tActor::update() 
 {
-	if (m_pAi)
+	if (m_pAI)
 	{ 
-		ai->update(this);
+		m_pAI->update(this);
 	}
 }
 

@@ -1,6 +1,9 @@
 
 //Predefine class
 class TCODColor;
+class tAttacker;
+class tDestructible;
+class tAi;
 
 class tActor 
 {
@@ -18,5 +21,5 @@ public :
 	bool m_Blocks; // can we walk on this actor
 	tAttacker *m_pAttacker; //something that deals damage
 	tDestructible *m_pDestructible; // something that can be damaged
-	tAi m_pAI; // something self updating
+	tAi* m_pAI; // something self updating
 };

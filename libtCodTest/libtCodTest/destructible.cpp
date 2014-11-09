@@ -37,6 +37,18 @@ void tDestructible::die(tActor* pOwner)
 	engine.sendToBack(pOwner);
 }
 
+tMonsterDestructible::tMonsterDestructible(float maxHp, float defense, const char* corpseName) :
+tDestructible(maxHp, defense, corpseName)
+{
+
+}
+
+tPlayerDestructible::tPlayerDestructible(float maxHp, float defense, const char* corpseName) :
+tDestructible(maxHp, defense, corpseName)
+{
+
+}
+
 void tMonsterDestructible::die(tActor* pOwner)
 {
 	//transform into a corpse.  doesnt block, cant attack, and doesnt move

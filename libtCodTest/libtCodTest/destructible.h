@@ -22,8 +22,9 @@ public:
 	void die(tActor* pOwner);
 };
 
-class tPlayerDestructible : tDestructible
+class tPlayerDestructible : public tDestructible
 {
+public:
 	tPlayerDestructible(float maxHP, float defense, const char* corpseName);
 	void die(tActor* pOwner);
 };
