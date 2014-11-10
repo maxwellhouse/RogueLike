@@ -22,4 +22,6 @@ public:
 
 protected:
 	void moveOrAttack(tActor* pOwner, int targetX, int targetY);
+
+    int m_MoveCount;
 };

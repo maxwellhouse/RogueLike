@@ -2,6 +2,15 @@
 #include <math.h>
 #include "main.h"
 
+// how many turns the monster chases the player
+// after losing his sight
+static const int TRACKING_TURNS = 3;
+
+double round(double number)
+{
+    return number < 0.0 ? ceil(number - 0.5) : floor(number + 0.5);
+}
+
 void tPlayerAi::update(tActor* pOwner)
 {
 	if (pOwner->m_pDestructible && pOwner->m_pDestructible->isDead())
@@ -87,14 +96,24 @@ void tMonsterAi::update(tActor* pOwner)
 	if (engine.m_pMap->isInFov(pOwner->m_XPosition, pOwner->m_YPosition))
 	{
 		// we can see the player, so move towards him
-		moveOrAttack(pOwner, engine.m_pPlayer->m_XPosition, engine.m_pPlayer->m_YPosition);
+		m_MoveCount = TRACKING_TURNS;
 	}
+    else
+    {
+        m_MoveCount--;
+    }
+    if(m_MoveCount > 0)
+    {
+        moveOrAttack(pOwner, engine.m_pPlayer->m_XPosition, engine.m_pPlayer->m_YPosition);
+    }
 }
 
 void tMonsterAi::moveOrAttack(tActor* pOwner, int targetX, int targetY)
 {
 	int dx = targetX - pOwner->m_XPosition;
 	int dy = targetY - pOwner->m_YPosition;
+    int stepdx = ( dx > 0 ? 1: -1 );
+    int stepdy = ( dy > 0 ? 1: -1 );
 	float distance = sqrtf(static_cast<float>(dx*dx + dy*dy));
 
 	if (distance > 2)
@@ -107,6 +126,14 @@ void tMonsterAi::moveOrAttack(tActor* pOwner, int targetX, int targetY)
 			pOwner->m_XPosition += dx;
 			pOwner->m_YPosition += dy;
 		}
+        else if(engine.m_pMap->canWalk(pOwner->m_XPosition + stepdx, pOwner->m_YPosition))
+        {
+            pOwner->m_XPosition += stepdx;
+        }
+        else if(engine.m_pMap->canWalk(pOwner->m_XPosition, pOwner->m_YPosition + stepdy))
+        {
+            pOwner->m_YPosition += stepdy;
+        }
 		else if (pOwner->m_pAttacker)
 		{
 			pOwner->m_pAttacker->attack(pOwner, engine.m_pPlayer);
