@@ -21,9 +21,10 @@ m_ScreenHeight(screenHeight)
 {
 	TCODConsole::initRoot(m_ScreenWidth, m_ScreenHeight, "libtcod C++ tutorial", false);
 	m_pPlayer = new tActor(40, 25, '@', "player", TCODColor::white);
-	m_pPlayer->m_pDestructible = new tPlayerDestructible(1, 2, "your cadaver");
+	m_pPlayer->m_pDestructible = new tPlayerDestructible(30, 2, "your cadaver");
 	m_pPlayer->m_pAttacker = new tAttacker(5);
 	m_pPlayer->m_pAI = new tPlayerAi();
+    m_pPlayer->m_pContainer = new tContainer(26);
 	m_Actors.push(m_pPlayer);
 	m_pMap = new tMap(m_ScreenWidth, m_ScreenHeight);
     m_pGui = new tGui();

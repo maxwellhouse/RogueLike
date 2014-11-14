@@ -11,8 +11,24 @@ tActor::tActor(int x, int y, int ch, const char *name, const TCODColor &col) :
 	m_Blocks(true),
 	m_pAttacker(NULL),
 	m_pDestructible(NULL),
-	m_pAI(NULL)
+	m_pAI(NULL),
+    m_pPickable(NULL),
+    m_pContainer(NULL)
 {
+}
+
+tActor::~tActor()
+{
+	if(m_pAttacker)
+        delete m_pAttacker;
+    if(m_pDestructible)
+        delete m_pDestructible;
+	if(m_pAI)
+        delete m_pAI;
+    if(m_pPickable)
+        delete m_pPickable;
+    if(m_pContainer)
+        delete m_pContainer;
 }
 
 void tActor::update() 

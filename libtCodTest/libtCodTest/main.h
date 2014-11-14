@@ -7,3 +7,5 @@ class tActor;
 #include "map.h"
 #include "engine.h"
 #include "gui.h"
+#include "pickable.h"
+#include "container.h"

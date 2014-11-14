@@ -4,11 +4,14 @@ class TCODColor;
 class tAttacker;
 class tDestructible;
 class tAi;
+class tPickable;
+class tContainer;
 
 class tActor 
 {
 public :
     tActor(int xPos, int yPos, int asciiCode, const char *name, const TCODColor &color);
+    ~tActor();
 
     void update();
     void render() const;
@@ -22,4 +25,6 @@ public :
 	tAttacker *m_pAttacker; //something that deals damage
 	tDestructible *m_pDestructible; // something that can be damaged
 	tAi* m_pAI; // something self updating
+    tPickable* m_pPickable;  // something that can be picked up and used
+    tContainer* m_pContainer; // something that can contain other actors
 };

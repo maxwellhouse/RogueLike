@@ -12,6 +12,7 @@ public:
 	inline bool isDead() { return m_CurrentHP <= 0; }
 
 	float takeDamage(tActor* pOwner, float damage);
+    float heal(float amount);
 	virtual void die(tActor* pOwner);
 };
 

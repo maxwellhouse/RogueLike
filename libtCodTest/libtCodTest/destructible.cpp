@@ -26,6 +26,17 @@ float tDestructible::takeDamage(tActor* pOwner, float damage)
 	return damage;
 }
 
+float tDestructible::heal(float amount)
+{
+    m_CurrentHP += amount;
+    if(m_CurrentHP > m_MaxHP)
+    {
+        amount -= m_CurrentHP - m_MaxHP;
+        m_CurrentHP = m_MaxHP;
+    }
+    return amount;
+}
+
 void tDestructible::die(tActor* pOwner)
 {
 	//transform actor into a corpse

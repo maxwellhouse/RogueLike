@@ -82,11 +82,13 @@
     <ClInclude Include="actor.h" />
     <ClInclude Include="ai.h" />
     <ClInclude Include="attacker.h" />
+    <ClInclude Include="container.h" />
     <ClInclude Include="destructible.h" />
     <ClInclude Include="engine.h" />
     <ClInclude Include="gui.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="map.h" />
+    <ClInclude Include="pickable.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
@@ -94,11 +96,13 @@
     <ClCompile Include="actor.cpp" />
     <ClCompile Include="ai.cpp" />
     <ClCompile Include="attacker.cpp" />
+    <ClCompile Include="container.cpp" />
     <ClCompile Include="destructible.cpp" />
     <ClCompile Include="engine.cpp" />
     <ClCompile Include="gui.cpp" />
     <ClCompile Include="libtCodTest.cpp" />
     <ClCompile Include="map.cpp" />
+    <ClCompile Include="pickable.cpp" />
     <ClCompile Include="stdafx.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
