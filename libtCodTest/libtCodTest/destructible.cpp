@@ -52,13 +52,13 @@ tDestructible(maxHp, defense, corpseName)
 void tMonsterDestructible::die(tActor* pOwner)
 {
 	//transform into a corpse.  doesnt block, cant attack, and doesnt move
-	printf("%s is dead\n", pOwner->m_pName);
+	engine.m_pGui->message(TCODColor::lightGrey, "%s is dead\n", pOwner->m_pName);
 	tDestructible::die(pOwner);
 }
 
 void tPlayerDestructible::die(tActor* pOwner)
 {
-	printf("You died!\n");
+	engine.m_pGui->message(TCODColor::red, "You died!\n");
 	tDestructible::die(pOwner);
 	engine.m_GameStatus = tEngine::eGS_DEFEAT;
 }

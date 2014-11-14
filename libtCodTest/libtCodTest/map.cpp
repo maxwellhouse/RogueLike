@@ -93,6 +93,10 @@ bool tMap::isExplored(int x, int y) const
 
 bool tMap::isInFov(int x, int y) const 
 {
+    if( x < 0 || x > m_Width || y < 0 || y > m_Height )
+    {
+        return false;
+    }
     if ( m_pMap->isInFov(x,y) ) 
     {
         m_pTiles[x + y * m_Width].explored = true;

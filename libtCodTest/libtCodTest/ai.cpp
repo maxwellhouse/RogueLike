@@ -79,7 +79,7 @@ bool tPlayerAi::moveOrAttack(tActor* pOwner, int targetX, int targetY)
 		if (pActor->m_pDestructible && pActor->m_pDestructible->isDead() == true &&
 			pActor->m_XPosition == targetX && pActor->m_YPosition == targetY)
 		{
-			printf("There is a %s here\n", pActor->m_pName);
+			engine.m_pGui->message(TCODColor::lightGrey,"There is a %s here\n", pActor->m_pName);
 		}
 	}
 	pOwner->m_XPosition = targetX;
@@ -107,7 +107,6 @@ void tMonsterAi::update(tActor* pOwner)
         moveOrAttack(pOwner, engine.m_pPlayer->m_XPosition, engine.m_pPlayer->m_YPosition);
     }
 }
-
 void tMonsterAi::moveOrAttack(tActor* pOwner, int targetX, int targetY)
 {
 	int dx = targetX - pOwner->m_XPosition;
@@ -116,7 +115,7 @@ void tMonsterAi::moveOrAttack(tActor* pOwner, int targetX, int targetY)
     int stepdy = ( dy > 0 ? 1: -1 );
 	float distance = sqrtf(static_cast<float>(dx*dx + dy*dy));
 
-	if (distance > 2)
+	if (distance >= 2)
 	{
 		dx = static_cast<int>(round(dx / distance));
 		dy = static_cast<int>(round(dy / distance));
@@ -134,9 +133,9 @@ void tMonsterAi::moveOrAttack(tActor* pOwner, int targetX, int targetY)
         {
             pOwner->m_YPosition += stepdy;
         }
-		else if (pOwner->m_pAttacker)
-		{
-			pOwner->m_pAttacker->attack(pOwner, engine.m_pPlayer);
-		}
+	}
+	else if (pOwner->m_pAttacker)
+	{
+		pOwner->m_pAttacker->attack(pOwner, engine.m_pPlayer);
 	}
 }

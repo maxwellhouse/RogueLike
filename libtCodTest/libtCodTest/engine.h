@@ -2,6 +2,7 @@
 //Predefine classes
 class tMap;
 class tActor;
+class tGui;
 
 class tEngine 
 {
@@ -20,7 +21,9 @@ public:
     int m_FovRadius;
 	int m_ScreenWidth;
 	int m_ScreenHeight;
+    tGui* m_pGui;
 	TCOD_key_t m_LastKey;
+    TCOD_mouse_t m_Mouse;
 
 public:
 enum eGameStatus {

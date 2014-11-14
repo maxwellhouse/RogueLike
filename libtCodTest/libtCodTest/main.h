@@ -6,3 +6,4 @@ class tActor;
 #include "actor.h"
 #include "map.h"
 #include "engine.h"
+#include "gui.h"
