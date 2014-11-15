@@ -1,17 +1,14 @@
 // libtCodTest.cpp : Defines the entry point for the console application.
 //
 
-#include "stdafx.h"
 #include "main.h"
 
 tEngine engine(80,50);
 
-int _tmain(int argc, _TCHAR* argv[])
+int main(int argc, wchar_t* argv[])
 {
-    int playerX = 40;
-    int playerY = 25;
     TCODConsole::initRoot(80,50,"libtcod C++ tutorial",false);
-    while ( !TCODConsole::isWindowClosed() ) 
+    while ( !TCODConsole::isWindowClosed() )
     {
         engine.update();
         engine.render();

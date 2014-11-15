@@ -3,13 +3,13 @@
 class TCODColor;
 class TCODMap;
 
-struct tTile 
+struct tTile
 {
     bool explored; // can we walk through this tile?
     tTile() : explored(false) {}
 };
- 
-class tMap 
+
+class tMap
 {
 public :
      tMap(int width, int height);
@@ -21,8 +21,9 @@ public :
     void render() const;
     bool canWalk(int x, int y) const;
     void addMonster(int x, int y);
+    void addItem(int x, int y);
 
-protected :  
+protected :
     void dig(int x1, int y1, int x2, int y2);
     void createRoom(bool first, int x1, int y1, int x2, int y2);
 

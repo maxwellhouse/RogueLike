@@ -10,9 +10,11 @@ class tPlayerAi : public tAi
 {
 public:
 	void update(tActor* pOwner);
+	void handleActionKey(tActor* pOwner, int ascii);
 
 protected:
 	bool moveOrAttack(tActor* pOwner, int targetX, int targetY);
+	tActor* choseFromInventory(tActor* pOwner);
 };
 
 class tMonsterAi : public tAi

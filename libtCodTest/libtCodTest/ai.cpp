@@ -2,6 +2,10 @@
 #include <math.h>
 #include "main.h"
 
+static const int INVENTORY_WIDTH = 50;
+static const int INVENTORY_HEIGHT = 28;
+static TCODConsole gConsole(INVENTORY_WIDTH, INVENTORY_HEIGHT);
+
 // how many turns the monster chases the player
 // after losing his sight
 static const int TRACKING_TURNS = 3;
@@ -42,6 +46,11 @@ void tPlayerAi::update(tActor* pOwner)
 		dx = 1;
 		break;
 	}
+	case TCODK_CHAR:
+	{
+        handleActionKey(pOwner, engine.m_LastKey.c);
+        break;
+	}
 	default:
 		break;
 	}
@@ -53,6 +62,52 @@ void tPlayerAi::update(tActor* pOwner)
 			engine.m_pMap->computeFov();
 		}
 	}
+}
+
+void tPlayerAi::handleActionKey(tActor* pOwner, int ascii)
+{
+    switch(ascii)
+    {
+        case 'g': // get item
+        {
+            bool found = false;
+            for(tActor** iterator = engine.m_Actors.begin(); iterator != engine.m_Actors.end(); ++iterator)
+            {
+                tActor* pActor = *iterator;
+                if(pActor->m_pPickable && pActor->m_XPosition == pOwner->m_XPosition &&
+                   pActor->m_YPosition == pOwner->m_YPosition)
+                   {
+                        if(pActor->m_pPickable->pick(pActor, pOwner))
+                        {
+                            found = true;
+                            engine.m_pGui->message(TCODColor::lightGrey, "You pick up the %s.", pActor->m_pName);
+                        }
+                        else if (found == false)
+                        {
+                            found = true;
+                            engine.m_pGui->message(TCODColor::red, "Your inventory is full.");
+                        }
+                   }
+            }
+            if(found == false)
+            {
+                engine.m_pGui->message(TCODColor::lightGrey, "There is nothing here.");
+            }
+            engine.m_GameStatus = tEngine::eGS_NEWTURN;
+            break;
+        }
+        case 'i' : // display inventory
+        {
+            tActor *pActor = choseFromInventory(pOwner);
+            if ( pActor )
+            {
+                pActor->m_pPickable->use(pActor,pOwner);
+                engine.m_GameStatus = tEngine::eGS_NEWTURN;
+            }
+            break;
+        }
+
+    }
 }
 
 bool tPlayerAi::moveOrAttack(tActor* pOwner, int targetX, int targetY)
@@ -76,7 +131,9 @@ bool tPlayerAi::moveOrAttack(tActor* pOwner, int targetX, int targetY)
 	for (tActor** iterator = engine.m_Actors.begin(); iterator != engine.m_Actors.end(); ++iterator)
 	{
 		tActor* pActor = *iterator;
-		if (pActor->m_pDestructible && pActor->m_pDestructible->isDead() == true &&
+		bool corpseOrItem = (pActor->m_pDestructible && pActor->m_pDestructible->isDead()
+            || pActor->m_pPickable);
+		if (corpseOrItem == true &&
 			pActor->m_XPosition == targetX && pActor->m_YPosition == targetY)
 		{
 			engine.m_pGui->message(TCODColor::lightGrey,"There is a %s here\n", pActor->m_pName);
@@ -85,6 +142,43 @@ bool tPlayerAi::moveOrAttack(tActor* pOwner, int targetX, int targetY)
 	pOwner->m_XPosition = targetX;
 	pOwner->m_YPosition = targetY;
 	return true;
+}
+
+tActor* tPlayerAi::choseFromInventory(tActor* pOwner)
+{
+    // display inventory frame
+    gConsole.setDefaultForeground(TCODColor(200,180,50));
+    gConsole.printFrame(0,0, INVENTORY_WIDTH, INVENTORY_HEIGHT, true, TCOD_BKGND_DEFAULT, "inventory");
+
+    // display the items with their keyboard shortcut
+    gConsole.setDefaultForeground(TCODColor::white);
+    int shortcut = 'a';
+    int y = 1;
+    for(tActor** iterator = pOwner->m_pContainer->m_Inventory.begin();
+        iterator != pOwner->m_pContainer->m_Inventory.end(); ++iterator)
+    {
+        tActor* pActor = *iterator;
+        gConsole.print(2,y,"%c, %s", shortcut, pActor->m_pName);
+        y++;
+        shortcut++;
+    }
+    // blit the inventory console on the root console
+    TCODConsole::blit(&gConsole, 0,0,INVENTORY_WIDTH,INVENTORY_HEIGHT,
+        TCODConsole::root, engine.m_ScreenWidth/2 - INVENTORY_WIDTH/2,
+        engine.m_ScreenHeight/2-INVENTORY_HEIGHT/2);
+    TCODConsole::flush();
+
+    TCOD_key_t key;
+    TCODSystem::waitForEvent(TCOD_KEY_PRESSED, &key, NULL, true);
+    if(key.vk == TCODK_CHAR)
+    {
+        int actorIndex = key.c - 'a';
+        if(actorIndex >= 0 && actorIndex < pOwner->m_pContainer->m_Inventory.size())
+        {
+            return pOwner->m_pContainer->m_Inventory.get(actorIndex);
+        }
+    }
+    return NULL;
 }
 
 void tMonsterAi::update(tActor* pOwner)

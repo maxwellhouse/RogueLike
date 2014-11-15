@@ -79,13 +79,13 @@ void tGui::renderMouseLook()
         {
             if(first == false)
             {
-                strcat_s(buf, ", ");
+                strcat(buf, ", ");
             }
             else
             {
                 first = false;
             }
-            strcat_s(buf, pActor->m_pName);
+            strcat(buf, pActor->m_pName);
         }
     }
     //display the list of actors under the mouse cursor
@@ -95,12 +95,11 @@ void tGui::renderMouseLook()
 
 void tGui::message(const TCODColor& color, const char* text, ...)
 {
-    //build the text
+    // build the text
     va_list ap;
-    va_start(ap, text);
-    int size =_vscprintf(text, ap);
-    char* buf = new char[size];
-    vsnprintf_s(buf, size, _TRUNCATE, text, ap);
+    char buf[128];
+    va_start(ap,text);
+    vsprintf(buf,text,ap);
     va_end(ap);
 
     char* pLineBegin = buf;
@@ -125,15 +124,13 @@ void tGui::message(const TCODColor& color, const char* text, ...)
         m_MessageLog.push(newMessage);
         pLineBegin = pLineEnd+1;
     } while( pLineEnd );
-
-    delete buf;
 }
 
 tGui::tMessage::tMessage(const char* text, const TCODColor& color):
 color(color)
 {
     this->text = new char[strlen(text)+1];
-    strcpy_s(this->text, strlen(text)+1, text);
+    strcpy(this->text, text);
 }
 
 tGui::tMessage::~tMessage()

@@ -4,7 +4,7 @@ class tMap;
 class tActor;
 class tGui;
 
-class tEngine 
+class tEngine
 {
 public :
     tEngine();
@@ -19,8 +19,8 @@ public:
     tActor * m_pPlayer;
     tMap * m_pMap;
     int m_FovRadius;
-	int m_ScreenWidth;
 	int m_ScreenHeight;
+	int m_ScreenWidth;
     tGui* m_pGui;
 	TCOD_key_t m_LastKey;
     TCOD_mouse_t m_Mouse;
@@ -34,5 +34,5 @@ enum eGameStatus {
         eGS_DEFEAT
     } m_GameStatus;
 };
- 
+
 extern tEngine engine;
