@@ -106,7 +106,16 @@ void tPlayerAi::handleActionKey(tActor* pOwner, int ascii)
             }
             break;
         }
-
+        case 'd': // drop item
+        {
+            tActor* pActor = choseFromInventory(pOwner);
+            if(pActor)
+            {
+                pActor->m_pPickable->drop(pActor, pOwner);
+                engine.m_GameStatus = tEngine::eGS_NEWTURN;
+            }
+        }
+        break;
     }
 }
 
@@ -201,6 +210,7 @@ void tMonsterAi::update(tActor* pOwner)
         moveOrAttack(pOwner, engine.m_pPlayer->m_XPosition, engine.m_pPlayer->m_YPosition);
     }
 }
+
 void tMonsterAi::moveOrAttack(tActor* pOwner, int targetX, int targetY)
 {
 	int dx = targetX - pOwner->m_XPosition;
@@ -232,4 +242,41 @@ void tMonsterAi::moveOrAttack(tActor* pOwner, int targetX, int targetY)
 	{
 		pOwner->m_pAttacker->attack(pOwner, engine.m_pPlayer);
 	}
+}
+
+tConfusedMonsterAi::tConfusedMonsterAi(int nbTurns, tAi* pOldAi):
+m_nbTurns(nbTurns),
+m_pAi(pOldAi)
+{
+}
+
+void tConfusedMonsterAi::update(tActor* pOwner)
+{
+    TCODRandom* pRng = TCODRandom::getInstance();
+    int dx = pRng->getInt(-1,1);
+    int dy = pRng->getInt(-1,1);
+    if( dx != 0 || dy != 0)
+    {
+        int destx = pOwner->m_XPosition + dx;
+        int desty = pOwner->m_YPosition + dy;
+        if(engine.m_pMap->canWalk(destx, desty))
+        {
+            pOwner->m_XPosition = destx;
+            pOwner->m_YPosition = desty;
+        }
+        else
+        {
+            tActor* pTarget = engine.getActor(destx, desty);
+            if(pTarget)
+            {
+                pOwner->m_pAttacker->attack(pOwner, pTarget);
+            }
+        }
+    }
+    m_nbTurns--;
+    if(m_nbTurns == 0)
+    {
+        pOwner->m_pAI = m_pAi;
+        delete this;
+    }
 }

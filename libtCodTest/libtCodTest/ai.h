@@ -27,3 +27,14 @@ protected:
 
     int m_MoveCount;
 };
+
+class tConfusedMonsterAi : public tMonsterAi
+{
+public:
+    tConfusedMonsterAi(int nbTurns, tAi* pOldAi);
+    void update(tActor* pOwner);
+
+protected:
+    int m_nbTurns;
+    tAi* m_pAi;
+};

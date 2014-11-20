@@ -13,6 +13,9 @@ public :
     void update();
     void render();
 	void sendToBack(tActor* pActor);
+    tActor* getClosestMonster(int x, int y, float range) const;
+    bool chooseATile(int* x, int* y, float maxRange = 0.0f);
+    tActor* getActor(int x, int y);
 
 public:
     TCODList<tActor *> m_Actors;

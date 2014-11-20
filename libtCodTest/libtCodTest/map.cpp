@@ -215,8 +215,34 @@ void tMap::addMonster(int x, int y)
 
 void tMap::addItem(int x, int y)
 {
-    tActor* pHealthPotion = new tActor(x,y, '!', "Health Potion", TCODColor::violet);
-    pHealthPotion->m_Blocks = false;
-    pHealthPotion->m_pPickable = new tHealer(5);
-    engine.m_Actors.push(pHealthPotion);
+    TCODRandom *rng = TCODRandom::getInstance();
+    int roll = rng->getInt(0, 100);
+    if(roll < 70)
+    {
+        tActor* pHealthPotion = new tActor(x,y, '!', "health potion", TCODColor::violet);
+        pHealthPotion->m_Blocks = false;
+        pHealthPotion->m_pPickable = new tHealer(4);
+        engine.m_Actors.push(pHealthPotion);
+    }
+    else if(roll < 80)
+    {
+        tActor* pLightningBolt = new tActor(x,y, '#', "scroll of lightning", TCODColor::lightYellow);
+        pLightningBolt->m_Blocks = false;
+        pLightningBolt->m_pPickable = new tLightningBolt(5,20);
+        engine.m_Actors.push(pLightningBolt);
+    }
+    else if(roll < 90)
+    {
+        tActor* pFireball = new tActor(x,y, '#', "scroll of fireball", TCODColor::lightYellow);
+        pFireball->m_Blocks = false;
+        pFireball->m_pPickable = new tFireball(3,12);
+        engine.m_Actors.push(pFireball);
+    }
+    else
+    {
+        tActor* pConfuse = new tActor(x,y, '#', "scroll of confusion", TCODColor::lightYellow);
+        pConfuse->m_Blocks = false;
+        pConfuse->m_pPickable = new tConfuse(10,8);
+        engine.m_Actors.push(pConfuse);
+    }
 }

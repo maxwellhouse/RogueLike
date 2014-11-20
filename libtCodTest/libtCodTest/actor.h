@@ -16,6 +16,8 @@ public :
     void update();
     void render() const;
 
+    float getDistance(int cx, int cy) const;
+
     int m_XPosition;
     int m_YPosition; // position on map
     int m_AsciiCode; // ascii code

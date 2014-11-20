@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+#include <cmath>
 #include "main.h"
 
 tActor::tActor(int x, int y, int ch, const char *name, const TCODColor &col) :
@@ -43,4 +43,11 @@ void tActor::render() const
 {
     TCODConsole::root->setChar(m_XPosition,m_YPosition,m_AsciiCode);
     TCODConsole::root->setCharForeground(m_XPosition,m_YPosition,m_Color);
+}
+
+float tActor::getDistance(int cx, int cy) const
+{
+    int dx = m_XPosition - cx;
+    int dy = m_YPosition - cy;
+    return sqrtf(static_cast<float>(dx*dx + dy*dy));
 }

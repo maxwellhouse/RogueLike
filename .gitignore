@@ -13,8 +13,13 @@ $RECYCLE.BIN/
 *.msi
 *.msm
 *.msp
+*.pdb
+*.idb
+*.log
 
-*.klockwork*
+# Klockwork
+.klocwork/
+*.kwlp
 *.obj
 
 # =========================
