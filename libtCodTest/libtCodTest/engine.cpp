@@ -3,18 +3,6 @@
 
 #include <limits>
 
-tEngine::tEngine() :
-m_FovRadius(10),
-m_GameStatus(eGS_STARTUP)
-{
-    TCODConsole::initRoot(80, 50, "libtcod C++ tutorial", false);
-    m_pPlayer = new tActor(40, 25, '@', "player", TCODColor::white);
-    m_Actors.push(m_pPlayer);
-    m_pMap = new tMap(80,45);
-    m_pGui = new tGui();
-    m_pGui->message(TCODColor::red, "Welcome stranger!\nPrepare to perish in the Tombs of the Ancient Kings.");
-}
-
 tEngine::tEngine(int screenWidth, int screenHeight) :
 m_FovRadius(10),
 m_GameStatus(eGS_STARTUP),
@@ -22,15 +10,7 @@ m_ScreenWidth(screenWidth),
 m_ScreenHeight(screenHeight)
 {
 	TCODConsole::initRoot(m_ScreenWidth, m_ScreenHeight, "libtcod C++ tutorial", false);
-	m_pPlayer = new tActor(40, 25, '@', "player", TCODColor::white);
-	m_pPlayer->m_pDestructible = new tPlayerDestructible(30, 2, "your cadaver");
-	m_pPlayer->m_pAttacker = new tAttacker(5);
-	m_pPlayer->m_pAI = new tPlayerAi();
-    m_pPlayer->m_pContainer = new tContainer(26);
-	m_Actors.push(m_pPlayer);
-	m_pMap = new tMap(m_ScreenWidth, m_ScreenHeight);
     m_pGui = new tGui();
-    m_pGui->message(TCODColor::red, "Welcome stranger!\nPrepare to perish in the Tombs of the Ancient Kings.");
 }
 
 tEngine::~tEngine() 
@@ -156,4 +136,24 @@ bool tEngine::chooseATile(int* x, int* y, float maxRange)
         TCODConsole::flush();
     }
     return false;
+}
+
+void tEngine::init()
+{
+    m_pPlayer = new tActor(40, 25, '@', "player", TCODColor::white);
+	m_pPlayer->m_pDestructible = new tPlayerDestructible(30, 2, "your cadaver");
+	m_pPlayer->m_pAttacker = new tAttacker(5);
+	m_pPlayer->m_pAI = new tPlayerAi();
+    m_pPlayer->m_pContainer = new tContainer(26);
+	m_Actors.push(m_pPlayer);
+	m_pMap = new tMap(m_ScreenWidth, m_ScreenHeight);
+    m_pGui->message(TCODColor::red, "Welcome stranger!\nPrepare to perish in the Tombs of the Ancient Kings.");
+}
+
+void tEngine::load()
+{
+}
+
+void tEngine::save()
+{
 }

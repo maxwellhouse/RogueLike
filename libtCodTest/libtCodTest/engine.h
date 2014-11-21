@@ -7,7 +7,6 @@ class tGui;
 class tEngine
 {
 public :
-    tEngine();
 	tEngine(int screenWidth, int screenHeight);
     ~tEngine();
     void update();
@@ -16,6 +15,9 @@ public :
     tActor* getClosestMonster(int x, int y, float range) const;
     bool chooseATile(int* x, int* y, float maxRange = 0.0f);
     tActor* getActor(int x, int y);
+    void init();
+    void load();
+    void save();
 
 public:
     TCODList<tActor *> m_Actors;
