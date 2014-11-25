@@ -75,7 +75,7 @@ roguelike_google_protocol::engine_tMap tMap::save()
     return mapSave;
 }
 
-void tMap::load(roguelike_google_protocol::engine::tMap map)
+void tMap::load(const roguelike_google_protocol::engine::tMap& map)
 {
     m_Seed = map.seed();
     for(int i = 0; i < m_Height*m_Width; ++i)

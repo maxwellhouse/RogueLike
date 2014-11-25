@@ -2,7 +2,6 @@
 //Predefine class
 class TCODColor;
 class TCODMap;
-class roguelike_google_protocol::engine_tMap;
 
 struct tTile
 {
@@ -25,7 +24,7 @@ public :
     void addItem(int x, int y);
     void init(bool withActors);
     roguelike_google_protocol::engine_tMap save();
-    void load(roguelike_google_protocol::engine::tMap map);
+    void load(const roguelike_google_protocol::engine::tMap& map);
 
 protected :
     void dig(int x1, int y1, int x2, int y2);
