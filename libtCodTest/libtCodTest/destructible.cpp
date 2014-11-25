@@ -4,9 +4,15 @@
 tDestructible::tDestructible(float maxHP, float defense, const char* corpseName) :
 m_MaxHP(maxHP),
 m_CurrentHP(maxHP),
-m_Defense(defense),
-m_pCorpseName(corpseName)
-{}
+m_Defense(defense)
+{
+    m_pCorpseName = strdup(corpseName);
+}
+
+tDestructible::~tDestructible()
+{
+    delete m_pCorpseName;
+}
 
 float tDestructible::takeDamage(tActor* pOwner, float damage)
 {

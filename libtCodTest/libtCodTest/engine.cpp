@@ -147,13 +147,35 @@ void tEngine::init()
     m_pPlayer->m_pContainer = new tContainer(26);
 	m_Actors.push(m_pPlayer);
 	m_pMap = new tMap(m_ScreenWidth, m_ScreenHeight);
+    m_pMap->init(true);
     m_pGui->message(TCODColor::red, "Welcome stranger!\nPrepare to perish in the Tombs of the Ancient Kings.");
 }
 
 void tEngine::load()
 {
+    std::fstream input("game.sav", std::ios::in | std::ios::binary);
+    roguelike_google_protocol::engine engineSave;
+
+    if(engineSave.ParseFromIstream(&input))
+    {
+        m_ScreenHeight = engineSave.height();
+        m_ScreenWidth = engineSave.width();
+        m_pMap = new tMap(m_ScreenWidth, m_ScreenHeight);
+        m_pMap->load(engineSave.map());
+    }
+    else
+    {
+        init();
+    }
 }
 
 void tEngine::save()
 {
+    std::fstream output("game.sav", std::ios::out | std::ios::binary);
+    roguelike_google_protocol::engine engineSave;
+
+    engineSave.set_height(m_ScreenHeight);
+    engineSave.set_width(m_ScreenWidth);
+    engineSave.set_allocated_map(m_pMap->save());
+    engineSave.SerializeToOstream(&output);
 }

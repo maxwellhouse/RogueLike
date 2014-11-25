@@ -23,6 +23,7 @@
 #include <google/protobuf/message.h>
 #include <google/protobuf/repeated_field.h>
 #include <google/protobuf/extension_set.h>
+#include <google/protobuf/generated_enum_reflection.h>
 #include <google/protobuf/unknown_field_set.h>
 // @@protoc_insertion_point(includes)
 
@@ -33,9 +34,493 @@ void  protobuf_AddDesc_RogueLike_2eproto();
 void protobuf_AssignDesc_RogueLike_2eproto();
 void protobuf_ShutdownFile_RogueLike_2eproto();
 
+class engine;
+class engine_tMap;
+class gui;
+class guiMessage;
+class guiColor;
 class actor;
+class attacker;
+class container;
+class destructible;
 
+enum destructible_destructibleType {
+  destructible_destructibleType_MONSTER = 1,
+  destructible_destructibleType_PLAYER = 2
+};
+bool destructible_destructibleType_IsValid(int value);
+const destructible_destructibleType destructible_destructibleType_destructibleType_MIN = destructible_destructibleType_MONSTER;
+const destructible_destructibleType destructible_destructibleType_destructibleType_MAX = destructible_destructibleType_PLAYER;
+const int destructible_destructibleType_destructibleType_ARRAYSIZE = destructible_destructibleType_destructibleType_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* destructible_destructibleType_descriptor();
+inline const ::std::string& destructible_destructibleType_Name(destructible_destructibleType value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    destructible_destructibleType_descriptor(), value);
+}
+inline bool destructible_destructibleType_Parse(
+    const ::std::string& name, destructible_destructibleType* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<destructible_destructibleType>(
+    destructible_destructibleType_descriptor(), name, value);
+}
 // ===================================================================
+
+class engine_tMap : public ::google::protobuf::Message {
+ public:
+  engine_tMap();
+  virtual ~engine_tMap();
+
+  engine_tMap(const engine_tMap& from);
+
+  inline engine_tMap& operator=(const engine_tMap& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const engine_tMap& default_instance();
+
+  void Swap(engine_tMap* other);
+
+  // implements Message ----------------------------------------------
+
+  engine_tMap* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const engine_tMap& from);
+  void MergeFrom(const engine_tMap& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required int32 seed = 1;
+  inline bool has_seed() const;
+  inline void clear_seed();
+  static const int kSeedFieldNumber = 1;
+  inline ::google::protobuf::int32 seed() const;
+  inline void set_seed(::google::protobuf::int32 value);
+
+  // repeated bool explored = 2;
+  inline int explored_size() const;
+  inline void clear_explored();
+  static const int kExploredFieldNumber = 2;
+  inline bool explored(int index) const;
+  inline void set_explored(int index, bool value);
+  inline void add_explored(bool value);
+  inline const ::google::protobuf::RepeatedField< bool >&
+      explored() const;
+  inline ::google::protobuf::RepeatedField< bool >*
+      mutable_explored();
+
+  // @@protoc_insertion_point(class_scope:roguelike_google_protocol.engine.tMap)
+ private:
+  inline void set_has_seed();
+  inline void clear_has_seed();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::RepeatedField< bool > explored_;
+  ::google::protobuf::int32 seed_;
+  friend void  protobuf_AddDesc_RogueLike_2eproto();
+  friend void protobuf_AssignDesc_RogueLike_2eproto();
+  friend void protobuf_ShutdownFile_RogueLike_2eproto();
+
+  void InitAsDefaultInstance();
+  static engine_tMap* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class engine : public ::google::protobuf::Message {
+ public:
+  engine();
+  virtual ~engine();
+
+  engine(const engine& from);
+
+  inline engine& operator=(const engine& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const engine& default_instance();
+
+  void Swap(engine* other);
+
+  // implements Message ----------------------------------------------
+
+  engine* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const engine& from);
+  void MergeFrom(const engine& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  typedef engine_tMap tMap;
+
+  // accessors -------------------------------------------------------
+
+  // required int32 height = 1;
+  inline bool has_height() const;
+  inline void clear_height();
+  static const int kHeightFieldNumber = 1;
+  inline ::google::protobuf::int32 height() const;
+  inline void set_height(::google::protobuf::int32 value);
+
+  // required int32 width = 2;
+  inline bool has_width() const;
+  inline void clear_width();
+  static const int kWidthFieldNumber = 2;
+  inline ::google::protobuf::int32 width() const;
+  inline void set_width(::google::protobuf::int32 value);
+
+  // required .roguelike_google_protocol.engine.tMap map = 3;
+  inline bool has_map() const;
+  inline void clear_map();
+  static const int kMapFieldNumber = 3;
+  inline const ::roguelike_google_protocol::engine_tMap& map() const;
+  inline ::roguelike_google_protocol::engine_tMap* mutable_map();
+  inline ::roguelike_google_protocol::engine_tMap* release_map();
+  inline void set_allocated_map(::roguelike_google_protocol::engine_tMap* map);
+
+  // @@protoc_insertion_point(class_scope:roguelike_google_protocol.engine)
+ private:
+  inline void set_has_height();
+  inline void clear_has_height();
+  inline void set_has_width();
+  inline void clear_has_width();
+  inline void set_has_map();
+  inline void clear_has_map();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::int32 height_;
+  ::google::protobuf::int32 width_;
+  ::roguelike_google_protocol::engine_tMap* map_;
+  friend void  protobuf_AddDesc_RogueLike_2eproto();
+  friend void protobuf_AssignDesc_RogueLike_2eproto();
+  friend void protobuf_ShutdownFile_RogueLike_2eproto();
+
+  void InitAsDefaultInstance();
+  static engine* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class gui : public ::google::protobuf::Message {
+ public:
+  gui();
+  virtual ~gui();
+
+  gui(const gui& from);
+
+  inline gui& operator=(const gui& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const gui& default_instance();
+
+  void Swap(gui* other);
+
+  // implements Message ----------------------------------------------
+
+  gui* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const gui& from);
+  void MergeFrom(const gui& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required int32 size = 1;
+  inline bool has_size() const;
+  inline void clear_size();
+  static const int kSizeFieldNumber = 1;
+  inline ::google::protobuf::int32 size() const;
+  inline void set_size(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:roguelike_google_protocol.gui)
+ private:
+  inline void set_has_size();
+  inline void clear_has_size();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::int32 size_;
+  friend void  protobuf_AddDesc_RogueLike_2eproto();
+  friend void protobuf_AssignDesc_RogueLike_2eproto();
+  friend void protobuf_ShutdownFile_RogueLike_2eproto();
+
+  void InitAsDefaultInstance();
+  static gui* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class guiMessage : public ::google::protobuf::Message {
+ public:
+  guiMessage();
+  virtual ~guiMessage();
+
+  guiMessage(const guiMessage& from);
+
+  inline guiMessage& operator=(const guiMessage& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const guiMessage& default_instance();
+
+  void Swap(guiMessage* other);
+
+  // implements Message ----------------------------------------------
+
+  guiMessage* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const guiMessage& from);
+  void MergeFrom(const guiMessage& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required string message = 1;
+  inline bool has_message() const;
+  inline void clear_message();
+  static const int kMessageFieldNumber = 1;
+  inline const ::std::string& message() const;
+  inline void set_message(const ::std::string& value);
+  inline void set_message(const char* value);
+  inline void set_message(const char* value, size_t size);
+  inline ::std::string* mutable_message();
+  inline ::std::string* release_message();
+  inline void set_allocated_message(::std::string* message);
+
+  // @@protoc_insertion_point(class_scope:roguelike_google_protocol.guiMessage)
+ private:
+  inline void set_has_message();
+  inline void clear_has_message();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::std::string* message_;
+  friend void  protobuf_AddDesc_RogueLike_2eproto();
+  friend void protobuf_AssignDesc_RogueLike_2eproto();
+  friend void protobuf_ShutdownFile_RogueLike_2eproto();
+
+  void InitAsDefaultInstance();
+  static guiMessage* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class guiColor : public ::google::protobuf::Message {
+ public:
+  guiColor();
+  virtual ~guiColor();
+
+  guiColor(const guiColor& from);
+
+  inline guiColor& operator=(const guiColor& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const guiColor& default_instance();
+
+  void Swap(guiColor* other);
+
+  // implements Message ----------------------------------------------
+
+  guiColor* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const guiColor& from);
+  void MergeFrom(const guiColor& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required int32 red = 1;
+  inline bool has_red() const;
+  inline void clear_red();
+  static const int kRedFieldNumber = 1;
+  inline ::google::protobuf::int32 red() const;
+  inline void set_red(::google::protobuf::int32 value);
+
+  // required int32 green = 2;
+  inline bool has_green() const;
+  inline void clear_green();
+  static const int kGreenFieldNumber = 2;
+  inline ::google::protobuf::int32 green() const;
+  inline void set_green(::google::protobuf::int32 value);
+
+  // required int32 blue = 3;
+  inline bool has_blue() const;
+  inline void clear_blue();
+  static const int kBlueFieldNumber = 3;
+  inline ::google::protobuf::int32 blue() const;
+  inline void set_blue(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:roguelike_google_protocol.guiColor)
+ private:
+  inline void set_has_red();
+  inline void clear_has_red();
+  inline void set_has_green();
+  inline void clear_has_green();
+  inline void set_has_blue();
+  inline void clear_has_blue();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::int32 red_;
+  ::google::protobuf::int32 green_;
+  ::google::protobuf::int32 blue_;
+  friend void  protobuf_AddDesc_RogueLike_2eproto();
+  friend void protobuf_AssignDesc_RogueLike_2eproto();
+  friend void protobuf_ShutdownFile_RogueLike_2eproto();
+
+  void InitAsDefaultInstance();
+  static guiColor* default_instance_;
+};
+// -------------------------------------------------------------------
 
 class actor : public ::google::protobuf::Message {
  public:
@@ -137,6 +622,41 @@ class actor : public ::google::protobuf::Message {
   inline bool block() const;
   inline void set_block(bool value);
 
+  // required bool isAttacker = 7;
+  inline bool has_isattacker() const;
+  inline void clear_isattacker();
+  static const int kIsAttackerFieldNumber = 7;
+  inline bool isattacker() const;
+  inline void set_isattacker(bool value);
+
+  // required bool isDestructible = 8;
+  inline bool has_isdestructible() const;
+  inline void clear_isdestructible();
+  static const int kIsDestructibleFieldNumber = 8;
+  inline bool isdestructible() const;
+  inline void set_isdestructible(bool value);
+
+  // required bool isAi = 9;
+  inline bool has_isai() const;
+  inline void clear_isai();
+  static const int kIsAiFieldNumber = 9;
+  inline bool isai() const;
+  inline void set_isai(bool value);
+
+  // required bool isPickable = 10;
+  inline bool has_ispickable() const;
+  inline void clear_ispickable();
+  static const int kIsPickableFieldNumber = 10;
+  inline bool ispickable() const;
+  inline void set_ispickable(bool value);
+
+  // required bool isContainer = 11;
+  inline bool has_iscontainer() const;
+  inline void clear_iscontainer();
+  static const int kIsContainerFieldNumber = 11;
+  inline bool iscontainer() const;
+  inline void set_iscontainer(bool value);
+
   // @@protoc_insertion_point(class_scope:roguelike_google_protocol.actor)
  private:
   inline void set_has_xpos();
@@ -151,6 +671,16 @@ class actor : public ::google::protobuf::Message {
   inline void clear_has_name();
   inline void set_has_block();
   inline void clear_has_block();
+  inline void set_has_isattacker();
+  inline void clear_has_isattacker();
+  inline void set_has_isdestructible();
+  inline void clear_has_isdestructible();
+  inline void set_has_isai();
+  inline void clear_has_isai();
+  inline void set_has_ispickable();
+  inline void clear_has_ispickable();
+  inline void set_has_iscontainer();
+  inline void clear_has_iscontainer();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
@@ -162,6 +692,11 @@ class actor : public ::google::protobuf::Message {
   ::google::protobuf::int32 color_;
   ::std::string* name_;
   bool block_;
+  bool isattacker_;
+  bool isdestructible_;
+  bool isai_;
+  bool ispickable_;
+  bool iscontainer_;
   friend void  protobuf_AddDesc_RogueLike_2eproto();
   friend void protobuf_AssignDesc_RogueLike_2eproto();
   friend void protobuf_ShutdownFile_RogueLike_2eproto();
@@ -169,10 +704,661 @@ class actor : public ::google::protobuf::Message {
   void InitAsDefaultInstance();
   static actor* default_instance_;
 };
+// -------------------------------------------------------------------
+
+class attacker : public ::google::protobuf::Message {
+ public:
+  attacker();
+  virtual ~attacker();
+
+  attacker(const attacker& from);
+
+  inline attacker& operator=(const attacker& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const attacker& default_instance();
+
+  void Swap(attacker* other);
+
+  // implements Message ----------------------------------------------
+
+  attacker* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const attacker& from);
+  void MergeFrom(const attacker& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required int32 power = 1;
+  inline bool has_power() const;
+  inline void clear_power();
+  static const int kPowerFieldNumber = 1;
+  inline ::google::protobuf::int32 power() const;
+  inline void set_power(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:roguelike_google_protocol.attacker)
+ private:
+  inline void set_has_power();
+  inline void clear_has_power();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::int32 power_;
+  friend void  protobuf_AddDesc_RogueLike_2eproto();
+  friend void protobuf_AssignDesc_RogueLike_2eproto();
+  friend void protobuf_ShutdownFile_RogueLike_2eproto();
+
+  void InitAsDefaultInstance();
+  static attacker* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class container : public ::google::protobuf::Message {
+ public:
+  container();
+  virtual ~container();
+
+  container(const container& from);
+
+  inline container& operator=(const container& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const container& default_instance();
+
+  void Swap(container* other);
+
+  // implements Message ----------------------------------------------
+
+  container* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const container& from);
+  void MergeFrom(const container& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required int32 totalSize = 1;
+  inline bool has_totalsize() const;
+  inline void clear_totalsize();
+  static const int kTotalSizeFieldNumber = 1;
+  inline ::google::protobuf::int32 totalsize() const;
+  inline void set_totalsize(::google::protobuf::int32 value);
+
+  // required int32 usedSize = 2;
+  inline bool has_usedsize() const;
+  inline void clear_usedsize();
+  static const int kUsedSizeFieldNumber = 2;
+  inline ::google::protobuf::int32 usedsize() const;
+  inline void set_usedsize(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:roguelike_google_protocol.container)
+ private:
+  inline void set_has_totalsize();
+  inline void clear_has_totalsize();
+  inline void set_has_usedsize();
+  inline void clear_has_usedsize();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::int32 totalsize_;
+  ::google::protobuf::int32 usedsize_;
+  friend void  protobuf_AddDesc_RogueLike_2eproto();
+  friend void protobuf_AssignDesc_RogueLike_2eproto();
+  friend void protobuf_ShutdownFile_RogueLike_2eproto();
+
+  void InitAsDefaultInstance();
+  static container* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class destructible : public ::google::protobuf::Message {
+ public:
+  destructible();
+  virtual ~destructible();
+
+  destructible(const destructible& from);
+
+  inline destructible& operator=(const destructible& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const destructible& default_instance();
+
+  void Swap(destructible* other);
+
+  // implements Message ----------------------------------------------
+
+  destructible* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const destructible& from);
+  void MergeFrom(const destructible& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  typedef destructible_destructibleType destructibleType;
+  static const destructibleType MONSTER = destructible_destructibleType_MONSTER;
+  static const destructibleType PLAYER = destructible_destructibleType_PLAYER;
+  static inline bool destructibleType_IsValid(int value) {
+    return destructible_destructibleType_IsValid(value);
+  }
+  static const destructibleType destructibleType_MIN =
+    destructible_destructibleType_destructibleType_MIN;
+  static const destructibleType destructibleType_MAX =
+    destructible_destructibleType_destructibleType_MAX;
+  static const int destructibleType_ARRAYSIZE =
+    destructible_destructibleType_destructibleType_ARRAYSIZE;
+  static inline const ::google::protobuf::EnumDescriptor*
+  destructibleType_descriptor() {
+    return destructible_destructibleType_descriptor();
+  }
+  static inline const ::std::string& destructibleType_Name(destructibleType value) {
+    return destructible_destructibleType_Name(value);
+  }
+  static inline bool destructibleType_Parse(const ::std::string& name,
+      destructibleType* value) {
+    return destructible_destructibleType_Parse(name, value);
+  }
+
+  // accessors -------------------------------------------------------
+
+  // required float maxHP = 1;
+  inline bool has_maxhp() const;
+  inline void clear_maxhp();
+  static const int kMaxHPFieldNumber = 1;
+  inline float maxhp() const;
+  inline void set_maxhp(float value);
+
+  // required float currentHP = 2;
+  inline bool has_currenthp() const;
+  inline void clear_currenthp();
+  static const int kCurrentHPFieldNumber = 2;
+  inline float currenthp() const;
+  inline void set_currenthp(float value);
+
+  // required float defense = 3;
+  inline bool has_defense() const;
+  inline void clear_defense();
+  static const int kDefenseFieldNumber = 3;
+  inline float defense() const;
+  inline void set_defense(float value);
+
+  // required string corpseName = 4;
+  inline bool has_corpsename() const;
+  inline void clear_corpsename();
+  static const int kCorpseNameFieldNumber = 4;
+  inline const ::std::string& corpsename() const;
+  inline void set_corpsename(const ::std::string& value);
+  inline void set_corpsename(const char* value);
+  inline void set_corpsename(const char* value, size_t size);
+  inline ::std::string* mutable_corpsename();
+  inline ::std::string* release_corpsename();
+  inline void set_allocated_corpsename(::std::string* corpsename);
+
+  // required .roguelike_google_protocol.destructible.destructibleType type = 5;
+  inline bool has_type() const;
+  inline void clear_type();
+  static const int kTypeFieldNumber = 5;
+  inline ::roguelike_google_protocol::destructible_destructibleType type() const;
+  inline void set_type(::roguelike_google_protocol::destructible_destructibleType value);
+
+  // @@protoc_insertion_point(class_scope:roguelike_google_protocol.destructible)
+ private:
+  inline void set_has_maxhp();
+  inline void clear_has_maxhp();
+  inline void set_has_currenthp();
+  inline void clear_has_currenthp();
+  inline void set_has_defense();
+  inline void clear_has_defense();
+  inline void set_has_corpsename();
+  inline void clear_has_corpsename();
+  inline void set_has_type();
+  inline void clear_has_type();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  float maxhp_;
+  float currenthp_;
+  ::std::string* corpsename_;
+  float defense_;
+  int type_;
+  friend void  protobuf_AddDesc_RogueLike_2eproto();
+  friend void protobuf_AssignDesc_RogueLike_2eproto();
+  friend void protobuf_ShutdownFile_RogueLike_2eproto();
+
+  void InitAsDefaultInstance();
+  static destructible* default_instance_;
+};
 // ===================================================================
 
 
 // ===================================================================
+
+// engine_tMap
+
+// required int32 seed = 1;
+inline bool engine_tMap::has_seed() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void engine_tMap::set_has_seed() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void engine_tMap::clear_has_seed() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void engine_tMap::clear_seed() {
+  seed_ = 0;
+  clear_has_seed();
+}
+inline ::google::protobuf::int32 engine_tMap::seed() const {
+  // @@protoc_insertion_point(field_get:roguelike_google_protocol.engine.tMap.seed)
+  return seed_;
+}
+inline void engine_tMap::set_seed(::google::protobuf::int32 value) {
+  set_has_seed();
+  seed_ = value;
+  // @@protoc_insertion_point(field_set:roguelike_google_protocol.engine.tMap.seed)
+}
+
+// repeated bool explored = 2;
+inline int engine_tMap::explored_size() const {
+  return explored_.size();
+}
+inline void engine_tMap::clear_explored() {
+  explored_.Clear();
+}
+inline bool engine_tMap::explored(int index) const {
+  // @@protoc_insertion_point(field_get:roguelike_google_protocol.engine.tMap.explored)
+  return explored_.Get(index);
+}
+inline void engine_tMap::set_explored(int index, bool value) {
+  explored_.Set(index, value);
+  // @@protoc_insertion_point(field_set:roguelike_google_protocol.engine.tMap.explored)
+}
+inline void engine_tMap::add_explored(bool value) {
+  explored_.Add(value);
+  // @@protoc_insertion_point(field_add:roguelike_google_protocol.engine.tMap.explored)
+}
+inline const ::google::protobuf::RepeatedField< bool >&
+engine_tMap::explored() const {
+  // @@protoc_insertion_point(field_list:roguelike_google_protocol.engine.tMap.explored)
+  return explored_;
+}
+inline ::google::protobuf::RepeatedField< bool >*
+engine_tMap::mutable_explored() {
+  // @@protoc_insertion_point(field_mutable_list:roguelike_google_protocol.engine.tMap.explored)
+  return &explored_;
+}
+
+// -------------------------------------------------------------------
+
+// engine
+
+// required int32 height = 1;
+inline bool engine::has_height() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void engine::set_has_height() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void engine::clear_has_height() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void engine::clear_height() {
+  height_ = 0;
+  clear_has_height();
+}
+inline ::google::protobuf::int32 engine::height() const {
+  // @@protoc_insertion_point(field_get:roguelike_google_protocol.engine.height)
+  return height_;
+}
+inline void engine::set_height(::google::protobuf::int32 value) {
+  set_has_height();
+  height_ = value;
+  // @@protoc_insertion_point(field_set:roguelike_google_protocol.engine.height)
+}
+
+// required int32 width = 2;
+inline bool engine::has_width() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void engine::set_has_width() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void engine::clear_has_width() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void engine::clear_width() {
+  width_ = 0;
+  clear_has_width();
+}
+inline ::google::protobuf::int32 engine::width() const {
+  // @@protoc_insertion_point(field_get:roguelike_google_protocol.engine.width)
+  return width_;
+}
+inline void engine::set_width(::google::protobuf::int32 value) {
+  set_has_width();
+  width_ = value;
+  // @@protoc_insertion_point(field_set:roguelike_google_protocol.engine.width)
+}
+
+// required .roguelike_google_protocol.engine.tMap map = 3;
+inline bool engine::has_map() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void engine::set_has_map() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void engine::clear_has_map() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void engine::clear_map() {
+  if (map_ != NULL) map_->::roguelike_google_protocol::engine_tMap::Clear();
+  clear_has_map();
+}
+inline const ::roguelike_google_protocol::engine_tMap& engine::map() const {
+  // @@protoc_insertion_point(field_get:roguelike_google_protocol.engine.map)
+  return map_ != NULL ? *map_ : *default_instance_->map_;
+}
+inline ::roguelike_google_protocol::engine_tMap* engine::mutable_map() {
+  set_has_map();
+  if (map_ == NULL) map_ = new ::roguelike_google_protocol::engine_tMap;
+  // @@protoc_insertion_point(field_mutable:roguelike_google_protocol.engine.map)
+  return map_;
+}
+inline ::roguelike_google_protocol::engine_tMap* engine::release_map() {
+  clear_has_map();
+  ::roguelike_google_protocol::engine_tMap* temp = map_;
+  map_ = NULL;
+  return temp;
+}
+inline void engine::set_allocated_map(::roguelike_google_protocol::engine_tMap* map) {
+  delete map_;
+  map_ = map;
+  if (map) {
+    set_has_map();
+  } else {
+    clear_has_map();
+  }
+  // @@protoc_insertion_point(field_set_allocated:roguelike_google_protocol.engine.map)
+}
+
+// -------------------------------------------------------------------
+
+// gui
+
+// required int32 size = 1;
+inline bool gui::has_size() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void gui::set_has_size() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void gui::clear_has_size() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void gui::clear_size() {
+  size_ = 0;
+  clear_has_size();
+}
+inline ::google::protobuf::int32 gui::size() const {
+  // @@protoc_insertion_point(field_get:roguelike_google_protocol.gui.size)
+  return size_;
+}
+inline void gui::set_size(::google::protobuf::int32 value) {
+  set_has_size();
+  size_ = value;
+  // @@protoc_insertion_point(field_set:roguelike_google_protocol.gui.size)
+}
+
+// -------------------------------------------------------------------
+
+// guiMessage
+
+// required string message = 1;
+inline bool guiMessage::has_message() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void guiMessage::set_has_message() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void guiMessage::clear_has_message() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void guiMessage::clear_message() {
+  if (message_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    message_->clear();
+  }
+  clear_has_message();
+}
+inline const ::std::string& guiMessage::message() const {
+  // @@protoc_insertion_point(field_get:roguelike_google_protocol.guiMessage.message)
+  return *message_;
+}
+inline void guiMessage::set_message(const ::std::string& value) {
+  set_has_message();
+  if (message_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    message_ = new ::std::string;
+  }
+  message_->assign(value);
+  // @@protoc_insertion_point(field_set:roguelike_google_protocol.guiMessage.message)
+}
+inline void guiMessage::set_message(const char* value) {
+  set_has_message();
+  if (message_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    message_ = new ::std::string;
+  }
+  message_->assign(value);
+  // @@protoc_insertion_point(field_set_char:roguelike_google_protocol.guiMessage.message)
+}
+inline void guiMessage::set_message(const char* value, size_t size) {
+  set_has_message();
+  if (message_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    message_ = new ::std::string;
+  }
+  message_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:roguelike_google_protocol.guiMessage.message)
+}
+inline ::std::string* guiMessage::mutable_message() {
+  set_has_message();
+  if (message_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    message_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:roguelike_google_protocol.guiMessage.message)
+  return message_;
+}
+inline ::std::string* guiMessage::release_message() {
+  clear_has_message();
+  if (message_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = message_;
+    message_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void guiMessage::set_allocated_message(::std::string* message) {
+  if (message_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete message_;
+  }
+  if (message) {
+    set_has_message();
+    message_ = message;
+  } else {
+    clear_has_message();
+    message_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:roguelike_google_protocol.guiMessage.message)
+}
+
+// -------------------------------------------------------------------
+
+// guiColor
+
+// required int32 red = 1;
+inline bool guiColor::has_red() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void guiColor::set_has_red() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void guiColor::clear_has_red() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void guiColor::clear_red() {
+  red_ = 0;
+  clear_has_red();
+}
+inline ::google::protobuf::int32 guiColor::red() const {
+  // @@protoc_insertion_point(field_get:roguelike_google_protocol.guiColor.red)
+  return red_;
+}
+inline void guiColor::set_red(::google::protobuf::int32 value) {
+  set_has_red();
+  red_ = value;
+  // @@protoc_insertion_point(field_set:roguelike_google_protocol.guiColor.red)
+}
+
+// required int32 green = 2;
+inline bool guiColor::has_green() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void guiColor::set_has_green() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void guiColor::clear_has_green() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void guiColor::clear_green() {
+  green_ = 0;
+  clear_has_green();
+}
+inline ::google::protobuf::int32 guiColor::green() const {
+  // @@protoc_insertion_point(field_get:roguelike_google_protocol.guiColor.green)
+  return green_;
+}
+inline void guiColor::set_green(::google::protobuf::int32 value) {
+  set_has_green();
+  green_ = value;
+  // @@protoc_insertion_point(field_set:roguelike_google_protocol.guiColor.green)
+}
+
+// required int32 blue = 3;
+inline bool guiColor::has_blue() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void guiColor::set_has_blue() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void guiColor::clear_has_blue() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void guiColor::clear_blue() {
+  blue_ = 0;
+  clear_has_blue();
+}
+inline ::google::protobuf::int32 guiColor::blue() const {
+  // @@protoc_insertion_point(field_get:roguelike_google_protocol.guiColor.blue)
+  return blue_;
+}
+inline void guiColor::set_blue(::google::protobuf::int32 value) {
+  set_has_blue();
+  blue_ = value;
+  // @@protoc_insertion_point(field_set:roguelike_google_protocol.guiColor.blue)
+}
+
+// -------------------------------------------------------------------
 
 // actor
 
@@ -372,6 +1558,383 @@ inline void actor::set_block(bool value) {
   // @@protoc_insertion_point(field_set:roguelike_google_protocol.actor.block)
 }
 
+// required bool isAttacker = 7;
+inline bool actor::has_isattacker() const {
+  return (_has_bits_[0] & 0x00000040u) != 0;
+}
+inline void actor::set_has_isattacker() {
+  _has_bits_[0] |= 0x00000040u;
+}
+inline void actor::clear_has_isattacker() {
+  _has_bits_[0] &= ~0x00000040u;
+}
+inline void actor::clear_isattacker() {
+  isattacker_ = false;
+  clear_has_isattacker();
+}
+inline bool actor::isattacker() const {
+  // @@protoc_insertion_point(field_get:roguelike_google_protocol.actor.isAttacker)
+  return isattacker_;
+}
+inline void actor::set_isattacker(bool value) {
+  set_has_isattacker();
+  isattacker_ = value;
+  // @@protoc_insertion_point(field_set:roguelike_google_protocol.actor.isAttacker)
+}
+
+// required bool isDestructible = 8;
+inline bool actor::has_isdestructible() const {
+  return (_has_bits_[0] & 0x00000080u) != 0;
+}
+inline void actor::set_has_isdestructible() {
+  _has_bits_[0] |= 0x00000080u;
+}
+inline void actor::clear_has_isdestructible() {
+  _has_bits_[0] &= ~0x00000080u;
+}
+inline void actor::clear_isdestructible() {
+  isdestructible_ = false;
+  clear_has_isdestructible();
+}
+inline bool actor::isdestructible() const {
+  // @@protoc_insertion_point(field_get:roguelike_google_protocol.actor.isDestructible)
+  return isdestructible_;
+}
+inline void actor::set_isdestructible(bool value) {
+  set_has_isdestructible();
+  isdestructible_ = value;
+  // @@protoc_insertion_point(field_set:roguelike_google_protocol.actor.isDestructible)
+}
+
+// required bool isAi = 9;
+inline bool actor::has_isai() const {
+  return (_has_bits_[0] & 0x00000100u) != 0;
+}
+inline void actor::set_has_isai() {
+  _has_bits_[0] |= 0x00000100u;
+}
+inline void actor::clear_has_isai() {
+  _has_bits_[0] &= ~0x00000100u;
+}
+inline void actor::clear_isai() {
+  isai_ = false;
+  clear_has_isai();
+}
+inline bool actor::isai() const {
+  // @@protoc_insertion_point(field_get:roguelike_google_protocol.actor.isAi)
+  return isai_;
+}
+inline void actor::set_isai(bool value) {
+  set_has_isai();
+  isai_ = value;
+  // @@protoc_insertion_point(field_set:roguelike_google_protocol.actor.isAi)
+}
+
+// required bool isPickable = 10;
+inline bool actor::has_ispickable() const {
+  return (_has_bits_[0] & 0x00000200u) != 0;
+}
+inline void actor::set_has_ispickable() {
+  _has_bits_[0] |= 0x00000200u;
+}
+inline void actor::clear_has_ispickable() {
+  _has_bits_[0] &= ~0x00000200u;
+}
+inline void actor::clear_ispickable() {
+  ispickable_ = false;
+  clear_has_ispickable();
+}
+inline bool actor::ispickable() const {
+  // @@protoc_insertion_point(field_get:roguelike_google_protocol.actor.isPickable)
+  return ispickable_;
+}
+inline void actor::set_ispickable(bool value) {
+  set_has_ispickable();
+  ispickable_ = value;
+  // @@protoc_insertion_point(field_set:roguelike_google_protocol.actor.isPickable)
+}
+
+// required bool isContainer = 11;
+inline bool actor::has_iscontainer() const {
+  return (_has_bits_[0] & 0x00000400u) != 0;
+}
+inline void actor::set_has_iscontainer() {
+  _has_bits_[0] |= 0x00000400u;
+}
+inline void actor::clear_has_iscontainer() {
+  _has_bits_[0] &= ~0x00000400u;
+}
+inline void actor::clear_iscontainer() {
+  iscontainer_ = false;
+  clear_has_iscontainer();
+}
+inline bool actor::iscontainer() const {
+  // @@protoc_insertion_point(field_get:roguelike_google_protocol.actor.isContainer)
+  return iscontainer_;
+}
+inline void actor::set_iscontainer(bool value) {
+  set_has_iscontainer();
+  iscontainer_ = value;
+  // @@protoc_insertion_point(field_set:roguelike_google_protocol.actor.isContainer)
+}
+
+// -------------------------------------------------------------------
+
+// attacker
+
+// required int32 power = 1;
+inline bool attacker::has_power() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void attacker::set_has_power() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void attacker::clear_has_power() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void attacker::clear_power() {
+  power_ = 0;
+  clear_has_power();
+}
+inline ::google::protobuf::int32 attacker::power() const {
+  // @@protoc_insertion_point(field_get:roguelike_google_protocol.attacker.power)
+  return power_;
+}
+inline void attacker::set_power(::google::protobuf::int32 value) {
+  set_has_power();
+  power_ = value;
+  // @@protoc_insertion_point(field_set:roguelike_google_protocol.attacker.power)
+}
+
+// -------------------------------------------------------------------
+
+// container
+
+// required int32 totalSize = 1;
+inline bool container::has_totalsize() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void container::set_has_totalsize() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void container::clear_has_totalsize() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void container::clear_totalsize() {
+  totalsize_ = 0;
+  clear_has_totalsize();
+}
+inline ::google::protobuf::int32 container::totalsize() const {
+  // @@protoc_insertion_point(field_get:roguelike_google_protocol.container.totalSize)
+  return totalsize_;
+}
+inline void container::set_totalsize(::google::protobuf::int32 value) {
+  set_has_totalsize();
+  totalsize_ = value;
+  // @@protoc_insertion_point(field_set:roguelike_google_protocol.container.totalSize)
+}
+
+// required int32 usedSize = 2;
+inline bool container::has_usedsize() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void container::set_has_usedsize() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void container::clear_has_usedsize() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void container::clear_usedsize() {
+  usedsize_ = 0;
+  clear_has_usedsize();
+}
+inline ::google::protobuf::int32 container::usedsize() const {
+  // @@protoc_insertion_point(field_get:roguelike_google_protocol.container.usedSize)
+  return usedsize_;
+}
+inline void container::set_usedsize(::google::protobuf::int32 value) {
+  set_has_usedsize();
+  usedsize_ = value;
+  // @@protoc_insertion_point(field_set:roguelike_google_protocol.container.usedSize)
+}
+
+// -------------------------------------------------------------------
+
+// destructible
+
+// required float maxHP = 1;
+inline bool destructible::has_maxhp() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void destructible::set_has_maxhp() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void destructible::clear_has_maxhp() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void destructible::clear_maxhp() {
+  maxhp_ = 0;
+  clear_has_maxhp();
+}
+inline float destructible::maxhp() const {
+  // @@protoc_insertion_point(field_get:roguelike_google_protocol.destructible.maxHP)
+  return maxhp_;
+}
+inline void destructible::set_maxhp(float value) {
+  set_has_maxhp();
+  maxhp_ = value;
+  // @@protoc_insertion_point(field_set:roguelike_google_protocol.destructible.maxHP)
+}
+
+// required float currentHP = 2;
+inline bool destructible::has_currenthp() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void destructible::set_has_currenthp() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void destructible::clear_has_currenthp() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void destructible::clear_currenthp() {
+  currenthp_ = 0;
+  clear_has_currenthp();
+}
+inline float destructible::currenthp() const {
+  // @@protoc_insertion_point(field_get:roguelike_google_protocol.destructible.currentHP)
+  return currenthp_;
+}
+inline void destructible::set_currenthp(float value) {
+  set_has_currenthp();
+  currenthp_ = value;
+  // @@protoc_insertion_point(field_set:roguelike_google_protocol.destructible.currentHP)
+}
+
+// required float defense = 3;
+inline bool destructible::has_defense() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void destructible::set_has_defense() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void destructible::clear_has_defense() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void destructible::clear_defense() {
+  defense_ = 0;
+  clear_has_defense();
+}
+inline float destructible::defense() const {
+  // @@protoc_insertion_point(field_get:roguelike_google_protocol.destructible.defense)
+  return defense_;
+}
+inline void destructible::set_defense(float value) {
+  set_has_defense();
+  defense_ = value;
+  // @@protoc_insertion_point(field_set:roguelike_google_protocol.destructible.defense)
+}
+
+// required string corpseName = 4;
+inline bool destructible::has_corpsename() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void destructible::set_has_corpsename() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void destructible::clear_has_corpsename() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void destructible::clear_corpsename() {
+  if (corpsename_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    corpsename_->clear();
+  }
+  clear_has_corpsename();
+}
+inline const ::std::string& destructible::corpsename() const {
+  // @@protoc_insertion_point(field_get:roguelike_google_protocol.destructible.corpseName)
+  return *corpsename_;
+}
+inline void destructible::set_corpsename(const ::std::string& value) {
+  set_has_corpsename();
+  if (corpsename_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    corpsename_ = new ::std::string;
+  }
+  corpsename_->assign(value);
+  // @@protoc_insertion_point(field_set:roguelike_google_protocol.destructible.corpseName)
+}
+inline void destructible::set_corpsename(const char* value) {
+  set_has_corpsename();
+  if (corpsename_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    corpsename_ = new ::std::string;
+  }
+  corpsename_->assign(value);
+  // @@protoc_insertion_point(field_set_char:roguelike_google_protocol.destructible.corpseName)
+}
+inline void destructible::set_corpsename(const char* value, size_t size) {
+  set_has_corpsename();
+  if (corpsename_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    corpsename_ = new ::std::string;
+  }
+  corpsename_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:roguelike_google_protocol.destructible.corpseName)
+}
+inline ::std::string* destructible::mutable_corpsename() {
+  set_has_corpsename();
+  if (corpsename_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    corpsename_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:roguelike_google_protocol.destructible.corpseName)
+  return corpsename_;
+}
+inline ::std::string* destructible::release_corpsename() {
+  clear_has_corpsename();
+  if (corpsename_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = corpsename_;
+    corpsename_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void destructible::set_allocated_corpsename(::std::string* corpsename) {
+  if (corpsename_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete corpsename_;
+  }
+  if (corpsename) {
+    set_has_corpsename();
+    corpsename_ = corpsename;
+  } else {
+    clear_has_corpsename();
+    corpsename_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:roguelike_google_protocol.destructible.corpseName)
+}
+
+// required .roguelike_google_protocol.destructible.destructibleType type = 5;
+inline bool destructible::has_type() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void destructible::set_has_type() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void destructible::clear_has_type() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void destructible::clear_type() {
+  type_ = 1;
+  clear_has_type();
+}
+inline ::roguelike_google_protocol::destructible_destructibleType destructible::type() const {
+  // @@protoc_insertion_point(field_get:roguelike_google_protocol.destructible.type)
+  return static_cast< ::roguelike_google_protocol::destructible_destructibleType >(type_);
+}
+inline void destructible::set_type(::roguelike_google_protocol::destructible_destructibleType value) {
+  assert(::roguelike_google_protocol::destructible_destructibleType_IsValid(value));
+  set_has_type();
+  type_ = value;
+  // @@protoc_insertion_point(field_set:roguelike_google_protocol.destructible.type)
+}
+
 
 // @@protoc_insertion_point(namespace_scope)
 
@@ -381,6 +1944,11 @@ inline void actor::set_block(bool value) {
 namespace google {
 namespace protobuf {
 
+template <> struct is_proto_enum< ::roguelike_google_protocol::destructible_destructibleType> : ::google::protobuf::internal::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::roguelike_google_protocol::destructible_destructibleType>() {
+  return ::roguelike_google_protocol::destructible_destructibleType_descriptor();
+}
 
 }  // namespace google
 }  // namespace protobuf

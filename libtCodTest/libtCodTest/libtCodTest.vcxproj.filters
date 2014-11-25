@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="GoogleProtocolBuffer">
+      <UniqueIdentifier>{84389567-43f7-4c31-a22c-0098d5ce4c09}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="actor.h">
@@ -44,6 +47,9 @@
     </ClInclude>
     <ClInclude Include="pickable.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\googleProtocol\RogueLike.pb.h">
+      <Filter>GoogleProtocolBuffer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -77,5 +83,13 @@
     <ClCompile Include="pickable.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\googleProtocol\RogueLike.pb.cc">
+      <Filter>GoogleProtocolBuffer</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\googleProtocol\RogueLike.proto">
+      <Filter>GoogleProtocolBuffer</Filter>
+    </None>
   </ItemGroup>
 </Project>

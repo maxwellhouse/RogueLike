@@ -1,0 +1,75 @@
+package roguelike_google_protocol;
+
+message engine
+{
+    required int32 height = 1;
+    required int32 width = 2;
+
+    message tMap
+    {
+        required int32 seed = 1;
+        repeated bool explored = 2;
+    }
+
+    required tMap map = 3;
+}
+
+message gui
+{
+    required int32 size = 1;
+}
+
+message guiMessage
+{
+    required string message = 1;
+}
+
+message guiColor
+{
+    required int32 red = 1;
+    required int32 green = 2;
+    required int32 blue = 3;
+}
+
+message actor
+{
+    required int32 xpos = 1;
+    required int32 ypos = 2;
+    required int32 asciiCode = 3;
+    required int32 color = 4;
+    required string name = 5;
+    required bool block = 6;
+    required bool isAttacker = 7;
+    required bool isDestructible = 8;
+    required bool isAi = 9;
+    required bool isPickable = 10;
+    required bool isContainer = 11;
+}
+
+message attacker
+{
+    required int32 power = 1;
+}
+
+message container
+{
+    required int32 totalSize = 1;
+    required int32 usedSize = 2;
+}
+
+
+message destructible
+{
+    required float maxHP = 1;
+    required float currentHP = 2;
+    required float defense = 3;
+    required string corpseName = 4;
+
+    enum destructibleType
+    {
+        MONSTER = 1;
+        PLAYER = 2;
+    }
+
+    required destructibleType type = 5;
+}

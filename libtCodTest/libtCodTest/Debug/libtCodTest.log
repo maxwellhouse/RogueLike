@@ -1,38 +1,127 @@
-﻿Build started 11/20/2014 4:05:14 PM.
-     1>Project "F:\Projects\RogueLike\libtCodTest\libtCodTest\libtCodTest.vcxproj" on node 2 (build target(s)).
+﻿Build started 11/25/2014 4:44:30 PM.
+     1>Project "F:\Projects\RogueLike\libtCodTest\libtCodTest\libtCodTest.vcxproj" on node 2 (ClCompile target(s)).
        Project file contains ToolsVersion="12.0". This toolset is unknown or missing. You may be able to resolve this by installing the appropriate .NET Framework for this toolset. Treating the project as if it had ToolsVersion="4.0".
-     1>InitializeBuildStatus:
-         Creating "Debug\libtCodTest.unsuccessfulbuild" because "AlwaysCreate" was specified.
-       ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I"..\..\libtcod-1.5.1\include" /I"..\..\libtcod-1.5.1\\" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt actor.cpp pickable.cpp
-         pickable.cpp
-         actor.cpp
-         Generating Code...
-       ManifestResourceCompile:
-         All outputs are up-to-date.
-       Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"F:\Projects\RogueLike\libtCodTest\Debug\libtCodTest.exe" /INCREMENTAL /NOLOGO /LIBPATH:"..\..\libtcod-1.5.1\lib" /LIBPATH:"..\..\libtcod-1.5.1\\" "libtcod-VS.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\libtCodTest.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"F:\Projects\RogueLike\libtCodTest\Debug\libtCodTest.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"F:\Projects\RogueLike\libtCodTest\Debug\libtCodTest.lib" /MACHINE:X86 Debug\libtCodTest.exe.embed.manifest.res
-         Debug\actor.obj
-         Debug\ai.obj
-         Debug\attacker.obj
-         Debug\container.obj
-         Debug\destructible.obj
-         Debug\engine.obj
-         Debug\gui.obj
-         Debug\libtCodTest.obj
-         Debug\map.obj
-         Debug\pickable.obj
-       Manifest:
-         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /out:"Debug\libtCodTest.exe.embed.manifest" /manifest Debug\libtCodTest.exe.intermediate.manifest
-         All outputs are up-to-date.
-       LinkEmbedManifest:
-         All outputs are up-to-date.
-         libtCodTest.vcxproj -> F:\Projects\RogueLike\libtCodTest\Debug\libtCodTest.exe
-       FinalizeBuildStatus:
-         Deleting file "Debug\libtCodTest.unsuccessfulbuild".
-         Touching "Debug\libtCodTest.lastbuildstate".
-     1>Done Building Project "F:\Projects\RogueLike\libtCodTest\libtCodTest\libtCodTest.vcxproj" (build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"..\..\libtcod-1.5.1\include" /I"..\..\libtcod-1.5.1\\" /I..\..\google\protobuf\include /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt map.cpp
+         map.cpp
+     1>f:\projects\roguelike\libtcodtest\libtcodtest\map.h(5): error C2653: 'roguelike_google_protocol' : is not a class or namespace name
+     1>f:\projects\roguelike\libtcodtest\libtcodtest\map.h(5): error C2079: 'engine_tMap' uses undefined class 'roguelike_google_protocol'
+     1>f:\projects\roguelike\libtcodtest\libtcodtest\map.h(27): error C2027: use of undefined type 'roguelike_google_protocol'
+                 f:\projects\roguelike\libtcodtest\libtcodtest\map.h(5) : see declaration of 'roguelike_google_protocol'
+     1>f:\projects\roguelike\libtcodtest\libtcodtest\map.h(27): error C2146: syntax error : missing ';' before identifier 'save'
+     1>f:\projects\roguelike\libtcodtest\libtcodtest\map.h(27): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>f:\projects\roguelike\libtcodtest\libtcodtest\map.h(27): warning C4183: 'save': missing return type; assumed to be a member function returning 'int'
+     1>f:\projects\roguelike\libtcodtest\libtcodtest\map.h(28): error C2027: use of undefined type 'roguelike_google_protocol'
+                 f:\projects\roguelike\libtcodtest\libtcodtest\map.h(5) : see declaration of 'roguelike_google_protocol'
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(30): error C2757: 'roguelike_google_protocol' : a symbol with this name already exists and therefore this name cannot be used as a namespace name
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(233): error C2027: use of undefined type 'roguelike_google_protocol'
+                 f:\projects\roguelike\libtcodtest\libtcodtest\map.h(5) : see declaration of 'roguelike_google_protocol'
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(233): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(233): error C2143: syntax error : missing ';' before '&'
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(233): error C2433: 'roguelike_google_protocol::engine::engine_tMap' : 'inline' not permitted on data declarations
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(233): warning C4183: 'map': missing return type; assumed to be a member function returning 'int'
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(234): error C2027: use of undefined type 'roguelike_google_protocol'
+                 f:\projects\roguelike\libtcodtest\libtcodtest\map.h(5) : see declaration of 'roguelike_google_protocol'
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(234): error C2143: syntax error : missing ';' before '*'
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(234): error C2433: 'roguelike_google_protocol::engine::engine_tMap' : 'inline' not permitted on data declarations
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(234): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(234): warning C4183: 'mutable_map': missing return type; assumed to be a member function returning 'int'
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(235): error C2027: use of undefined type 'roguelike_google_protocol'
+                 f:\projects\roguelike\libtcodtest\libtcodtest\map.h(5) : see declaration of 'roguelike_google_protocol'
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(235): error C2143: syntax error : missing ';' before '*'
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(235): error C2433: 'roguelike_google_protocol::engine::engine_tMap' : 'inline' not permitted on data declarations
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(235): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(235): warning C4183: 'release_map': missing return type; assumed to be a member function returning 'int'
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(236): error C2027: use of undefined type 'roguelike_google_protocol'
+                 f:\projects\roguelike\libtcodtest\libtcodtest\map.h(5) : see declaration of 'roguelike_google_protocol'
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(236): error C2061: syntax error : identifier 'engine_tMap'
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(253): error C2027: use of undefined type 'roguelike_google_protocol'
+                 f:\projects\roguelike\libtcodtest\libtcodtest\map.h(5) : see declaration of 'roguelike_google_protocol'
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(253): error C2143: syntax error : missing ';' before '*'
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(253): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(991): error C2027: use of undefined type 'roguelike_google_protocol'
+                 f:\projects\roguelike\libtcodtest\libtcodtest\map.h(5) : see declaration of 'roguelike_google_protocol'
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(991): error C2146: syntax error : missing ';' before identifier 'type'
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(991): error C2433: 'roguelike_google_protocol::destructible::destructible_destructibleType' : 'inline' not permitted on data declarations
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(991): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(991): warning C4183: 'type': missing return type; assumed to be a member function returning 'int'
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(992): error C2027: use of undefined type 'roguelike_google_protocol'
+                 f:\projects\roguelike\libtcodtest\libtcodtest\map.h(5) : see declaration of 'roguelike_google_protocol'
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(992): error C2061: syntax error : identifier 'destructible_destructibleType'
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(1147): error C2065: 'map_' : undeclared identifier
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(1147): error C2027: use of undefined type 'roguelike_google_protocol'
+                 f:\projects\roguelike\libtcodtest\libtcodtest\map.h(5) : see declaration of 'roguelike_google_protocol'
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(1147): error C2227: left of '->Clear' must point to class/struct/union/generic type
+                 type is ''unknown-type''
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(1150): error C2027: use of undefined type 'roguelike_google_protocol'
+                 f:\projects\roguelike\libtcodtest\libtcodtest\map.h(5) : see declaration of 'roguelike_google_protocol'
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(1150): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(1150): error C2143: syntax error : missing ';' before '&'
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(1150): error C2433: 'engine_tMap' : 'inline' not permitted on data declarations
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(1152): error C2065: 'map_' : undeclared identifier
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(1152): error C2039: 'map_' : is not a member of 'roguelike_google_protocol::engine'
+                 f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(160) : see declaration of 'roguelike_google_protocol::engine'
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(1154): error C2027: use of undefined type 'roguelike_google_protocol'
+                 f:\projects\roguelike\libtcodtest\libtcodtest\map.h(5) : see declaration of 'roguelike_google_protocol'
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(1154): error C2143: syntax error : missing ';' before '*'
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(1154): error C2433: 'engine_tMap' : 'inline' not permitted on data declarations
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(1154): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(1154): error C2373: 'roguelike_google_protocol::engine_tMap' : redefinition; different type modifiers
+                 f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(1150) : see declaration of 'roguelike_google_protocol::engine_tMap'
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(1156): error C2065: 'map_' : undeclared identifier
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(1156): error C2027: use of undefined type 'roguelike_google_protocol'
+                 f:\projects\roguelike\libtcodtest\libtcodtest\map.h(5) : see declaration of 'roguelike_google_protocol'
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(1156): error C2061: syntax error : identifier 'engine_tMap'
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(1158): error C2065: 'map_' : undeclared identifier
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(1160): error C2027: use of undefined type 'roguelike_google_protocol'
+                 f:\projects\roguelike\libtcodtest\libtcodtest\map.h(5) : see declaration of 'roguelike_google_protocol'
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(1160): error C2143: syntax error : missing ';' before '*'
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(1160): error C2433: 'engine_tMap' : 'inline' not permitted on data declarations
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(1160): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(1160): error C2373: 'roguelike_google_protocol::engine_tMap' : redefinition; different type modifiers
+                 f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(1150) : see declaration of 'roguelike_google_protocol::engine_tMap'
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(1162): error C2027: use of undefined type 'roguelike_google_protocol'
+                 f:\projects\roguelike\libtcodtest\libtcodtest\map.h(5) : see declaration of 'roguelike_google_protocol'
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(1162): error C2065: 'temp' : undeclared identifier
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(1162): error C2065: 'map_' : undeclared identifier
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(1163): error C2065: 'map_' : undeclared identifier
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(1164): error C2065: 'temp' : undeclared identifier
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(1166): error C2027: use of undefined type 'roguelike_google_protocol'
+                 f:\projects\roguelike\libtcodtest\libtcodtest\map.h(5) : see declaration of 'roguelike_google_protocol'
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(1166): error C2597: illegal reference to non-static member 'roguelike_google_protocol::engine::engine_tMap'
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(1166): error C3867: 'roguelike_google_protocol::engine::engine_tMap': function call missing argument list; use '&roguelike_google_protocol::engine::engine_tMap' to create a pointer to member
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(1166): error C3867: 'roguelike_google_protocol::engine::map': function call missing argument list; use '&roguelike_google_protocol::engine::map' to create a pointer to member
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(1166): error C2297: '*' : illegal, right operand has type 'int &(__thiscall roguelike_google_protocol::engine::* )(void) const'
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(1166): error C2448: 'roguelike_google_protocol::engine::set_allocated_map' : function-style initializer appears to be a function definition
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(1927): error C2027: use of undefined type 'roguelike_google_protocol'
+                 f:\projects\roguelike\libtcodtest\libtcodtest\map.h(5) : see declaration of 'roguelike_google_protocol'
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(1927): error C2143: syntax error : missing ';' before 'roguelike_google_protocol::destructible::type'
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(1927): error C2433: 'destructible_destructibleType' : 'inline' not permitted on data declarations
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(1927): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(1929): error C2027: use of undefined type 'roguelike_google_protocol'
+                 f:\projects\roguelike\libtcodtest\libtcodtest\map.h(5) : see declaration of 'roguelike_google_protocol'
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(1929): error C2061: syntax error : identifier 'destructible_destructibleType'
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(1931): error C2027: use of undefined type 'roguelike_google_protocol'
+                 f:\projects\roguelike\libtcodtest\libtcodtest\map.h(5) : see declaration of 'roguelike_google_protocol'
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(1931): error C2146: syntax error : missing ')' before identifier 'value'
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(1931): error C2761: 'void roguelike_google_protocol::destructible::set_type(void)' : member function redeclaration not allowed
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(1931): error C2059: syntax error : ')'
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(1931): error C2143: syntax error : missing ';' before '{'
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(1931): error C2447: '{' : missing function header (old-style formal list?)
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(1947): error C2027: use of undefined type 'roguelike_google_protocol'
+                 f:\projects\roguelike\libtcodtest\libtcodtest\map.h(5) : see declaration of 'roguelike_google_protocol'
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(1947): error C2065: 'destructible_destructibleType' : undeclared identifier
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(1947): error C2923: 'google::protobuf::is_proto_enum' : 'destructible_destructibleType' is not a valid template type argument for parameter 'T'
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(1947): error C2913: explicit specialization; 'google::protobuf::is_proto_enum' is not a specialization of a class template
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(1949): error C2027: use of undefined type 'roguelike_google_protocol'
+                 f:\projects\roguelike\libtcodtest\libtcodtest\map.h(5) : see declaration of 'roguelike_google_protocol'
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(1949): error C2065: 'destructible_destructibleType' : undeclared identifier
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(1951): error C2974: 'google::protobuf::GetEnumDescriptor' : invalid template argument for 'E', type expected
+                 f:\projects\roguelike\google\protobuf\include\google\protobuf\generated_enum_reflection.h(61) : see declaration of 'google::protobuf::GetEnumDescriptor'
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(1951): error C2912: explicit specialization; 'const google::protobuf::EnumDescriptor *google::protobuf::GetEnumDescriptor<destructible_destructibleType>(void)' is not a specialization of a function template
+     1>f:\projects\roguelike\libtcodtest\googleprotocol\roguelike.pb.h(1951): fatal error C1903: unable to recover from previous error(s); stopping compilation
+     1>Done Building Project "F:\Projects\RogueLike\libtCodTest\libtCodTest\libtCodTest.vcxproj" (ClCompile target(s)) -- FAILED.
 
-Build succeeded.
+Build FAILED.
 
-Time Elapsed 00:00:00.92
+Time Elapsed 00:00:00.87

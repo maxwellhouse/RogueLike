@@ -22,3 +22,23 @@ F:\Projects\RogueLike\libtCodTest\libtCodTest\container.h;;21;0;0
 F:\Projects\RogueLike\libtCodTest\libtCodTest\container.cpp;;22;0;0
 F:\Projects\RogueLike\libtCodTest\libtCodTest\pickable.h;;23;0;0
 F:\Projects\RogueLike\libtCodTest\libtCodTest\pickable.cpp;;24;0;0
+f:\Projects\RogueLike\libtcod-1.5.1\include\bsp.hpp;;25;0;0
+f:\Projects\RogueLike\libtcod-1.5.1\include\tree.hpp;;26;0;0
+F:\Projects\tutorialFiles\Map.cpp;;27;0;0
+F:\Projects\tutorialFiles\Gui.cpp;;28;0;0
+F:\Projects\RogueLike\libtCodTest\libtCodTest\map.h;;29;0;0
+F:\Projects\RogueLike\libtCodTest\googleProtocol\RogueLike.proto;;30;0;0
+f:\Projects\RogueLike\libtcod-1.5.1\include\color.hpp;;31;0;0
+F:\Projects\RogueLike\libtCodTest\googleProtocol\RogueLike.pb.h;;32;0;0
+F:\Projects\RogueLike\libtCodTest\googleProtocol\RogueLike.pb.cc;;33;0;0
+C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\crt\src\eh\throw.cpp;;34;0;0
+f:\Projects\protobuf-2.6.0\src\google\protobuf\message.cc;;35;0;0
+f:\Projects\protobuf-2.6.0\src\google\protobuf\io\zero_copy_stream_impl.cc;;36;0;0
+f:\Projects\protobuf-2.6.0\src\google\protobuf\io\zero_copy_stream.h;;37;0;0
+f:\Projects\protobuf-2.6.0\src\google\protobuf\io\zero_copy_stream_impl_lite.cc;;38;0;0
+f:\Projects\protobuf-2.6.0\src\google\protobuf\stubs\common.h;;39;0;0
+f:\Projects\protobuf-2.6.0\src\google\protobuf\message_lite.cc;;40;0;0
+f:\Projects\protobuf-2.6.0\src\google\protobuf\io\coded_stream.cc;;41;0;0
+C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\crt\src\newaop.cpp;;42;0;0
+C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\crt\src\new.cpp;;43;0;0
+C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\crt\src\dbgmalloc.c;;44;0;0

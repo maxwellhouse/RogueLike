@@ -9,11 +9,19 @@ public:
 	const char* m_pCorpseName; // the actor's name once destroyed
 
 	tDestructible(float maxHP, float defense, const char* corpseName);
+    ~tDestructible();
 	inline bool isDead() { return m_CurrentHP <= 0; }
 
 	float takeDamage(tActor* pOwner, float damage);
     float heal(float amount);
 	virtual void die(tActor* pOwner);
+    static tDestructible* create();
+protected:
+    enum eDestructibleType
+    {
+        eDT_MONSTER,
+        eDT_PLAYER
+    };
 };
 
 class tMonsterDestructible : public tDestructible

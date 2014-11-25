@@ -1,3 +1,5 @@
+#include <iostream>
+#include <fstream>
 #include "libtcod.hpp"
 class tActor;
 #include "destructible.h"
@@ -9,3 +11,4 @@ class tActor;
 #include "gui.h"
 #include "pickable.h"
 #include "container.h"
+#include "..\googleProtocol\RogueLike.pb.h"

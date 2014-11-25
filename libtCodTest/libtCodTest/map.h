@@ -2,6 +2,7 @@
 //Predefine class
 class TCODColor;
 class TCODMap;
+class roguelike_google_protocol::engine_tMap;
 
 struct tTile
 {
@@ -22,10 +23,13 @@ public :
     bool canWalk(int x, int y) const;
     void addMonster(int x, int y);
     void addItem(int x, int y);
+    void init(bool withActors);
+    roguelike_google_protocol::engine_tMap save();
+    void load(roguelike_google_protocol::engine::tMap map);
 
 protected :
     void dig(int x1, int y1, int x2, int y2);
-    void createRoom(bool first, int x1, int y1, int x2, int y2);
+    void createRoom(bool first, int x1, int y1, int x2, int y2, bool withActors);
 
 public:
     int m_Width;
@@ -34,6 +38,8 @@ public:
 protected :
     tTile * m_pTiles;
     TCODMap *m_pMap;
+    TCODRandom* m_pRandomNumGenerator;
+    long m_Seed;
     friend class BspListener;
 
 private:

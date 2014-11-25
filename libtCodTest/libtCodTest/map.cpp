@@ -25,37 +25,63 @@ bool visitNode(TCODBsp *node, void *userData)
     if ( node->isLeaf() )
     {
         int x,y,w,h;
+        bool withActors = (bool)userData;
         // dig a room
-        TCODRandom *rng = TCODRandom::getInstance();
-        w = rng->getInt(ROOM_MIN_SIZE, node->w - 2);
-        h = rng->getInt(ROOM_MIN_SIZE, node->h - 2);
-        x = rng->getInt(node->x + 1, node->x + node->w - w - 1);
-        y = rng->getInt(node->y + 1, node->y + node->h - h - 1);
-        map.createRoom(roomNum == 0, x, y, x + w - 1, y + h - 1);
+        w = map.m_pRandomNumGenerator->getInt(ROOM_MIN_SIZE, node->w - 2);
+        h = map.m_pRandomNumGenerator->getInt(ROOM_MIN_SIZE, node->h - 2);
+        x = map.m_pRandomNumGenerator->getInt(node->x + 1, node->x + node->w - w - 1);
+        y = map.m_pRandomNumGenerator->getInt(node->y + 1, node->y + node->h - h - 1);
+        map.createRoom(roomNum == 0, x, y, x + w - 1, y + h - 1, withActors);
         if ( roomNum != 0 )
         {
             // dig a corridor from last room
             map.dig(lastx, lasty, x + w / 2, lasty);
             map.dig(x + w / 2, lasty, x + w / 2, y + h / 2);
         }
-            lastx = x + w / 2;
-            lasty = y + h / 2;
-            roomNum++;
-        }
-        return true;
+        lastx = x + w / 2;
+        lasty = y + h / 2;
+        roomNum++;
     }
+    return true;
+}
 };
 
 tMap::tMap(int width, int height) :
     m_Width(width),
     m_Height(height)
 {
+    m_Seed = TCODRandom::getInstance()->getInt(0, 0x7FFFFFFF);
+}
+
+void tMap::init(bool withActors)
+{
+    m_pRandomNumGenerator = new TCODRandom(m_Seed, TCOD_RNG_CMWC);
     m_pTiles = new tTile[m_Width * m_Height];
     m_pMap = new TCODMap(m_Width, m_Height);
     TCODBsp bsp(0, 0, m_Width, m_Height);
-    bsp.splitRecursive(NULL, 8, ROOM_MAX_SIZE, ROOM_MAX_SIZE, 1.5f, 1.5f);
+    bsp.splitRecursive(m_pRandomNumGenerator, 8, ROOM_MAX_SIZE, ROOM_MAX_SIZE, 1.5f, 1.5f);
     BspListener listener(*this);
-    bsp.traverseInvertedLevelOrder(&listener,NULL);
+    bsp.traverseInvertedLevelOrder(&listener,(void*) withActors);
+}
+
+roguelike_google_protocol::engine_tMap tMap::save()
+{
+    roguelike_google_protocol::engine_tMap mapSave;
+    mapSave.set_seed(m_Seed);
+    for(int i = 0; i < m_Height*m_Width; ++i)
+    {
+        mapSave.add_explored(m_pTiles[i].explored);
+    }
+    return mapSave;
+}
+
+void tMap::load(roguelike_google_protocol::engine::tMap map)
+{
+    m_Seed = map.seed();
+    for(int i = 0; i < m_Height*m_Width; ++i)
+    {
+        m_pTiles[i].explored = map.explored(i);
+    }
 }
 
 tMap::~tMap()
@@ -134,40 +160,43 @@ void tMap::dig(int x1, int y1, int x2, int y2)
     }
 }
 
-void tMap::createRoom(bool first, int x1, int y1, int x2, int y2)
+void tMap::createRoom(bool first, int x1, int y1, int x2, int y2, bool withActors)
 {
     dig (x1,y1,x2,y2);
-    if ( first )
+    if(withActors == true)
     {
-        // put the player in the first room
-        engine.m_pPlayer->m_XPosition = (x1 + x2) / 2;
-        engine.m_pPlayer->m_YPosition = (y1 + y2) / 2;
-    }
-    else
-    {
-        TCODRandom *rng = TCODRandom::getInstance();
-        int nbMonsters = rng->getInt(0, MAX_ROOM_MONSTERS);
-        while (nbMonsters > 0)
+        if ( first )
         {
-            int x = rng->getInt(x1, x2);
-            int y = rng->getInt(y1, y2);
-            if ( canWalk(x,y) )
-            {
-                addMonster(x,y);
-            }
-            nbMonsters--;
+            // put the player in the first room
+            engine.m_pPlayer->m_XPosition = (x1 + x2) / 2;
+            engine.m_pPlayer->m_YPosition = (y1 + y2) / 2;
         }
-
-        int nbItems = rng->getInt(0, MAX_ROOM_ITEMS);
-        while(nbItems > 0)
+        else
         {
-            int x = rng->getInt(x1,x2);
-            int y = rng->getInt(y1,y2);
-            if(canWalk(x,y))
+            TCODRandom *rng = TCODRandom::getInstance();
+            int nbMonsters = rng->getInt(0, MAX_ROOM_MONSTERS);
+            while (nbMonsters > 0)
             {
-                addItem(x,y);
+                int x = rng->getInt(x1, x2);
+                int y = rng->getInt(y1, y2);
+                if ( canWalk(x,y) )
+                {
+                    addMonster(x,y);
+                }
+                nbMonsters--;
             }
-            nbItems--;
+
+            int nbItems = rng->getInt(0, MAX_ROOM_ITEMS);
+            while(nbItems > 0)
+            {
+                int x = rng->getInt(x1,x2);
+                int y = rng->getInt(y1,y2);
+                if(canWalk(x,y))
+                {
+                    addItem(x,y);
+                }
+                nbItems--;
+            }
         }
     }
 }

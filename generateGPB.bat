@@ -1,0 +1,1 @@
+protoc.exe -I=F:\Projects\RogueLike\libtCodTest\googleProtocol\ --cpp_out=F:\Projects\RogueLike\libtCodTest\googleProtocol F:\Projects\RogueLike\libtCodTest\googleProtocol\RogueLike.proto
